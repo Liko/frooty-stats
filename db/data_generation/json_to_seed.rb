@@ -3,7 +3,7 @@ require 'pry'
 
 
 def import_json
-    file = File.read('league_2012_data.json')
+    file = File.read("#{__dir__}/league_2012_data.json")
     data_hash = JSON.parse(file)
 end
 
@@ -14,9 +14,14 @@ def model_data(data_hash)
     position_hash = getPositions
     player_array = getPlayers(data_hash, country_hash, club_array, position_hash)
 
-    binding.pry
-    
-    
+    data = {
+        :country_hash => country_hash,
+        :club_array => club_array,
+        :position_hash => position_hash, 
+        :player_array => player_array
+    }
+
+  
 end
 
 def getCountries(data_hash)
