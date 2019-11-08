@@ -9,9 +9,9 @@ end
 def model_data(data_hash)
 
     country_hash = getCountries(data_hash)
-    club_array = getClubs(data_hash, country_hash)
+    club_array = getClubs(data_hash)
     position_hash = getPositions
-    player_array = getPlayers(data_hash, country_hash, club_array, position_hash)
+    player_array = getPlayers(data_hash)
 
     data = {
         :country_hash => country_hash,
@@ -33,7 +33,7 @@ def getCountries(data_hash)
     #country_hash is hash of hashes {country:id}
 end
 
-def getClubs(data_hash, country_hash)
+def getClubs(data_hash)
     club_array = []
     club_hash = data_hash["teams"]["data"]
 
@@ -42,7 +42,7 @@ def getClubs(data_hash, country_hash)
         club[:club_id] = c["id"]
         club[:name] = c["name"]
         club[:shorthand] = c["shortHand"]
-        club[:country_id] = country_hash[c["country"]]
+        club[:country] = c["country"]
         club[:image] = c["image"]
         club[:founded] = c["founded"].to_i
         club[:stadium_id] = nil
@@ -61,7 +61,7 @@ def getPositions
     }
 end
 
-def getPlayers(data_hash, country_hash, club_array, position_hash)
+def getPlayers(data_hash)
     player_array = []
     player_hash = data_hash["players"]["data"]
 
@@ -69,10 +69,10 @@ def getPlayers(data_hash, country_hash, club_array, position_hash)
         player = {}
         player[:name] = p["known_as"]
         player[:shorthand] = p["shorthand"]
-        player[:country_id] = country_hash[p["nationality"]]
+        player[:country] = p["nationality"]
         player[:birthday] = p["birthday"]
-        player[:position_id] = position_hash[p["position"]]
-        player[:club_id] = club_array.select{|club|club[:club_id]==p["club_team_id"]}.map{|club|club[:club_id]}[0]
+        player[:position_id] = p["position"]
+        player[:club_id] = p["club_team_id"]
         player_array << player
     end
     #still potentially missing player stats like goals, assists etc
@@ -80,9 +80,9 @@ def getPlayers(data_hash, country_hash, club_array, position_hash)
 end
 
 
-def run
+def run_json_to_seed
     data_hash = import_json
     model_data(data_hash)
 end
 
-run
+run_json_to_seed
