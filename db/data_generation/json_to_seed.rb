@@ -39,7 +39,7 @@ def getClubs(data_hash)
 
     club_hash.map do |c|
         club = {}
-        club[:club_id] = c["id"]
+        club[:fs_club_id] = c["id"]
         club[:name] = c["name"]
         club[:shorthand] = c["shortHand"]
         club[:country] = c["country"]
@@ -69,14 +69,21 @@ def getPlayers(data_hash)
         player = {}
         player[:name] = p["known_as"]
         player[:shorthand] = p["shorthand"]
+        check_edge_case_nationalities(p)
         player[:country] = p["nationality"]
         player[:birthday] = p["birthday"]
-        player[:position_id] = p["position"]
-        player[:club_id] = p["club_team_id"]
+        player[:position] = p["position"]
+        player[:fs_club_id] = p["club_team_id"]
         player_array << player
     end
     #still potentially missing player stats like goals, assists etc
     player_array
+end
+
+def check_edge_case_nationalities(p)
+    if p["nationality"] == "Côte d'Ivoire"
+        p["nationality"] = "Ivory Coast"
+    end
 end
 
 
