@@ -20,8 +20,11 @@
         <td><%= @player.country.name %></td>
         <td><%= @player.birthday %></td>
         <td><%= @player.position.name %></td>
-        <td><%= link_to @player.club.name, club_path(@player.club) %></td>
-        
+
+        <td><%= link_to @player.club.name, player_path(@player) %></td>
+
+       
+       
       </tr>
 
   </tbody>
