@@ -1,0 +1,37 @@
+<h1><%= @club.name %> <%= image_tag @club.image %></h1>
+
+<p>Country: <%= @club.country.name %></p>
+<p>Founding Year: <%= @club.founded %></p>
+<p><%= @club.competition.name %></p>
+<p>Stadium: <%= @club.stadium.name %></p>
+
+<h2> <%= "#{@club.name}" %> Players </h2>
+
+ 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Age</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= link_to player.name, player %></td>
+        <td><%= link_to player.country.name, country_path(player.country) %></td>
+        <td><%= player.birthday %></td>
+        <td><%= player.position.name %></td>
+      
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ 
+
+ <%= link_to 'Back', url_for(:back) %>

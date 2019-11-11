@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_144047) do
+ActiveRecord::Schema.define(version: 2019_11_11_121946) do
+
+  create_table "club_colors", force: :cascade do |t|
+    t.integer "club_id"
+    t.integer "color_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "clubs", force: :cascade do |t|
     t.string "name"
@@ -22,6 +29,21 @@ ActiveRecord::Schema.define(version: 2019_11_11_144047) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "fs_club_id"
+    t.integer "competition_id"
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.string "name"
+    t.string "hex"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "fs_league_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -33,6 +55,26 @@ ActiveRecord::Schema.define(version: 2019_11_11_144047) do
   create_table "favourites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "club_id"
+  end
+  
+  create_table "goals", force: :cascade do |t|
+    t.integer "scorer_id"
+    t.integer "team_id"
+    t.integer "assister_id"
+    t.integer "match_id"
+    t.integer "minute"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "home_id"
+    t.integer "away_id"
+    t.integer "home_goal_count"
+    t.integer "away_goal_count"
+    t.integer "stadium_id"
+    t.integer "date"
+    t.integer "attendance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,6 +94,13 @@ ActiveRecord::Schema.define(version: 2019_11_11_144047) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stadia", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "fs_club_id"
   end
 
   create_table "users", force: :cascade do |t|
