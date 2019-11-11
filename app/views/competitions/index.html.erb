@@ -1,0 +1,8 @@
+<h1>All Competitions:</h1>
+
+<% @competitions.each do |competition|%>
+    <%=link_to competition.name, competition %><br/>
+    <%=competition.clubs.size%> Teams<br/>
+    *placeholder* Show Top 4 teams **
+
+<% end %>

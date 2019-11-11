@@ -1,0 +1,8 @@
+<h2><%= @competition.name %></h2>
+
+Teams:
+<br/>
+<% @competition.clubs.each do |club|%>
+    <%= image_tag club.image %><br/>
+    <%=link_to club.name, club %><br/>
+<% end %>
