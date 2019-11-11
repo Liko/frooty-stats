@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 2019_11_11_121946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "club_id"
+  end
+  
   create_table "goals", force: :cascade do |t|
     t.integer "scorer_id"
     t.integer "team_id"
