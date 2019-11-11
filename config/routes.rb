@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :matches
   resources :players
   resources :clubs
+  resources :favourites
   resources :countries
   resources :positions
   resources :competitions
