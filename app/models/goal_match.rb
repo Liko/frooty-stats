@@ -1,0 +1,2 @@
+class GoalMatch < ApplicationRecord
+end

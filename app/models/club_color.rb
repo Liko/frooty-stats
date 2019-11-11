@@ -1,0 +1,2 @@
+class ClubColor < ApplicationRecord
+end
