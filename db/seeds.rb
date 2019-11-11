@@ -1,5 +1,5 @@
 require_relative 'data_generation/json_to_seed'
-
+# require 'pry'
 
 def run
     remove_old_seeds
@@ -8,6 +8,7 @@ def run
 
     countries = seed_countries(data)
     positions = seed_positions(data)
+    stadia = seed_stadia(data)
     clubs = seed_clubs(data)
     players = seed_players(data)
 end
@@ -15,12 +16,19 @@ end
 def remove_old_seeds
     Country.destroy_all
     puts "Countries cleared"
+
     Position.destroy_all 
     puts "Positions cleared"
+
+    Stadium.destroy_all
+    puts "Stadia cleared"
+
     Club.destroy_all
     puts "Clubs cleared"
+
     Player.destroy_all
     puts "Players cleared"
+
 end
 
 def seed_countries(data)
@@ -39,8 +47,18 @@ def seed_positions(data)
     puts "Positions seeded"
 end
 
+def seed_stadia(data)
+    stadia = data[:stadium_hash]
+    stadia.each do |stadium|
+        # binding.pry
+        Stadium.create(fs_club_id: stadium[0], name: stadium[1])
+    end
+    puts "Stadia seeded"
+end
+
 def seed_clubs(data)
     clubs = data[:club_array]
+    stadiums = data[:stadium_hash]
     clubs.each do |c|
         Club.create(
             name: c[:name],
@@ -49,7 +67,7 @@ def seed_clubs(data)
             image: c[:image],
             founded: c[:founded],
             fs_club_id: c[:fs_club_id],
-            stadium_id: nil
+            stadium_id: Stadium.find_by(fs_club_id:c[:fs_club_id]).id
         )
     end
     puts "Clubs seeded"

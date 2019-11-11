@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_094555) do
+ActiveRecord::Schema.define(version: 2019_11_11_112730) do
 
   create_table "club_colors", force: :cascade do |t|
     t.integer "club_id"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_094555) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "fs_club_id"
   end
 
 end

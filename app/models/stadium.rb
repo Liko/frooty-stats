@@ -1,4 +1,4 @@
 class Stadium < ApplicationRecord
-    belongs_to :club
+    has_one :club
     has_many :matches
 end

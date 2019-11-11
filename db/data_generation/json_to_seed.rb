@@ -9,12 +9,14 @@ end
 def model_data(data_hash)
 
     country_hash = getCountries(data_hash)
+    stadium_hash = getStadiums(data_hash)
     club_array = getClubs(data_hash)
     position_hash = getPositions
     player_array = getPlayers(data_hash)
 
     data = {
         :country_hash => country_hash,
+        :stadium_hash => stadium_hash,
         :club_array => club_array,
         :position_hash => position_hash, 
         :player_array => player_array
@@ -31,6 +33,17 @@ def getCountries(data_hash)
     end
     country_hash
     #country_hash is hash of hashes {country:id}
+end
+
+def getStadiums(data_hash)
+    matches = data_hash["matches"]["data"]
+    stadiums_hash = {}
+
+    stadiums_array = matches.map{|match| {match["homeID"] => match["stadium_name"]}}.uniq.select{|stadium| stadium.values[0].size > 0}
+
+    stadiums_array.each{|stadium| stadiums_hash[stadium.keys[0]] = stadium.values[0]}
+
+    stadiums_hash
 end
 
 def getClubs(data_hash)
