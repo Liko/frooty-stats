@@ -1,12 +1,4 @@
 class FavouritesController < ApplicationController
-    
-    def index
-        @favs = Favourite.all
-    end
-
-    def show
-        @fav = Favourite.find(params[:id])
-    end
 
     def new
         @favourite = Favourite.new
