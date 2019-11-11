@@ -9,12 +9,16 @@ end
 def model_data(data_hash)
 
     country_hash = getCountries(data_hash)
+    stadium_hash = getStadiums(data_hash)
+    competition_array = getCompetitions(data_hash)
     club_array = getClubs(data_hash)
     position_hash = getPositions
     player_array = getPlayers(data_hash)
 
     data = {
         :country_hash => country_hash,
+        :stadium_hash => stadium_hash,
+        :competition_array => competition_array,
         :club_array => club_array,
         :position_hash => position_hash, 
         :player_array => player_array
@@ -33,6 +37,30 @@ def getCountries(data_hash)
     #country_hash is hash of hashes {country:id}
 end
 
+def getStadiums(data_hash)
+    matches = data_hash["matches"]["data"]
+    stadiums_hash = {}
+
+    stadiums_array = matches.map{|match| {match["homeID"] => match["stadium_name"]}}.uniq.select{|stadium| stadium.values[0].size > 0}
+
+    stadiums_array.each{|stadium| stadiums_hash[stadium.keys[0]] = stadium.values[0]}
+
+    stadiums_hash
+end
+
+def getCompetitions(data_hash)
+    competition_array = [] 
+
+    competition = {}
+    
+    competition[:fs_league_id] = 2012
+    competition[:name] = "Premier League 2019/2020"
+
+    competition_array << competition
+
+    competition_array
+end
+
 def getClubs(data_hash)
     club_array = []
     club_hash = data_hash["teams"]["data"]
@@ -40,6 +68,7 @@ def getClubs(data_hash)
     club_hash.map do |c|
         club = {}
         club[:fs_club_id] = c["id"]
+        club[:fs_league_id] = c["competition_id"]
         club[:name] = c["name"]
         club[:shorthand] = c["shortHand"]
         club[:country] = c["country"]
