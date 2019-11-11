@@ -1,0 +1,9 @@
+<h1>Account management page</h1>
+
+<h2>Edit your email or password</h2>
+<%= render "edit" %>
+<br>
+
+<h2>Danger Zone</h2>
+<p>Delete this account permanently</p>
+<%= button_to "Delete my acount", @user, method: :delete %>

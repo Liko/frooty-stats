@@ -21,8 +21,6 @@ def remove_old_seeds
     puts "Clubs cleared"
     Player.destroy_all
     puts "Players cleared"
-    User.destroy_all
-    puts "Users cleared"
 end
 
 def seed_countries(data)
