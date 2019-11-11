@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_112501) do
+ActiveRecord::Schema.define(version: 2019_11_11_094555) do
+
+  create_table "club_colors", force: :cascade do |t|
+    t.integer "club_id"
+    t.integer "color_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "clubs", force: :cascade do |t|
     t.string "name"
@@ -24,8 +31,43 @@ ActiveRecord::Schema.define(version: 2019_11_09_112501) do
     t.integer "fs_club_id"
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.string "name"
+    t.string "hex"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.integer "scorer_id"
+    t.integer "team_id"
+    t.integer "assister_id"
+    t.integer "match_id"
+    t.integer "minute"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "home_id"
+    t.integer "away_id"
+    t.integer "home_goal_count"
+    t.integer "away_goal_count"
+    t.integer "stadium_id"
+    t.integer "date"
+    t.integer "attendance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,6 +84,12 @@ ActiveRecord::Schema.define(version: 2019_11_09_112501) do
   end
 
   create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stadia", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

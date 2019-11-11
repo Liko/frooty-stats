@@ -9,5 +9,5 @@ rails g resource Player name shorthand country_id:integer birthday:integer posit
 rails g resource Match home_id:integer away_id:integer home_goal_count:integer away_goal_count:integer stadium_id:integer date:integer attendance:integer // added
 rails g model Stadium name // added
 rails g model Goal scorer_id:integer team_id:integer assister_id:integer match_id:integer minute:integer //added
-rails g model GoalMatch goal_id:integer match_id:integer // added
+rails g model GoalMatch goal_id:integer match_id:integer // added // removed, and not required
 rails g model Competition name // added

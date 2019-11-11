@@ -1,2 +1,0 @@
-class GoalMatch < ApplicationRecord
-end
