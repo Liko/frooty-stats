@@ -1,10 +1,14 @@
-<h2><%= @competition.name %></h2>
+<div class="container">
 
-<%= render "/stats/top_stats"%>
+    <h2><%= @competition.name %></h2>
 
-Teams:
-<br/>
-<% @competition.clubs.each do |club|%>
-    <%= image_tag club.image %><br/>
-    <%=link_to club.name, club %><br/>
-<% end %>
+    <%= render "/stats/top_stats"%>
+
+    Teams:
+    <br/>
+    <% @competition.clubs.each do |club|%>
+        <%= image_tag club.image %><br/>
+        <%=link_to club.name, club %><br/>
+    <% end %>
+
+</div>
