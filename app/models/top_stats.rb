@@ -26,6 +26,7 @@ module  TopStats
         def getTopStat(my_stat, top_x)
             self.sortByTopStat(my_stat, top_x).map do |stat|
                 {
+                    :id => stat.player.id,
                     :name => stat.player.name, 
                     :num_stat => stat.method(my_stat).call,
                     :image => stat.player.club.image         
