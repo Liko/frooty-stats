@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
 
   <body>
@@ -15,7 +16,8 @@
 
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">
-    <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="mdb logo">
+  <%= image_tag ("frootystats_logo_265x64.png") %>
+    <%# <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="mdb logo"> %>
   </a>
 
   <!-- Collapse button -->
@@ -69,8 +71,9 @@
 </nav>
 <!--/.Navbar-->
 
-
+<div class="dusty-grass-gradient">
     <%= yield %>
+</div>
 
 
 <!-- JQuery -->
