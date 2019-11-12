@@ -106,6 +106,7 @@ def getPlayers(data_hash)
         player[:position] = p["position"]
         player[:fs_club_id] = p["club_team_id"]
         player[:fs_player_id] = p["id"]
+        player[:fs_competition_id] = p["competition_id"]
         player_array << player
     end
     player_array
