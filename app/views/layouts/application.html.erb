@@ -6,7 +6,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= favicon_link_tag asset_path('favicon.png') %>
+    
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -23,7 +24,8 @@
 
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">
-    <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="mdb logo">
+  <%= image_tag ("frootystats_logo_265x64.png") %>
+    <%# <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="mdb logo"> %>
   </a>
 
   <!-- Collapse button -->
@@ -81,8 +83,9 @@
 </nav>
 <!--/.Navbar-->
 
-
+<div class="dusty-grass-gradient">
     <%= yield %>
+</div>
 
 
   </body>

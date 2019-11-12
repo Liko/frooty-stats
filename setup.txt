@@ -11,3 +11,5 @@ rails g model Stadium name // added
 rails g model Goal scorer_id:integer team_id:integer assister_id:integer match_id:integer minute:integer //added
 rails g model GoalMatch goal_id:integer match_id:integer // added // removed, and not required
 rails g model Competition name // added
+rails g model PlayerStats player_id:integer //added full stats in migration
+rails g model ClubStats club_id:integer //added full stats in migration

@@ -1,21 +1,11 @@
-
- <%= render 'club_profile' %>
 <h1><%= @club.name %> <%= image_tag @club.image %></h1>
-
-<%= render "/favourites/add_or_remove" %>
 
 <p>Country: <%= @club.country.name %></p>
 <p>Founding Year: <%= @club.founded %></p>
 <p><%= @club.competition.name %></p>
-<p>League Position: <%= @clubStats.leaguePosition_overall%></p>
 <p>Stadium: <%= @club.stadium.name %></p>
-<p>Average Attendance: <%= @clubStats.average_attendance_home %></p>
-<p>Goals Scored: <%= @clubStats.seasonGoals_overall %></p>
-<p>Goals Conceded: <%= @clubStats.seasonConceded_overall %></p> 
 
-<%= render "/stats/top_stats"%>
-
-
+<%= render "/favourites/add_or_remove" %>
 
 
 <h2> <%= "#{@club.name}" %> Players </h2>
@@ -45,7 +35,6 @@
     <% end %>
   </tbody>
 </table>
-
+ 
 
  <%= link_to 'Back', url_for(:back) %>
-
