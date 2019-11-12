@@ -1,5 +1,7 @@
 <h2><%= @competition.name %></h2>
 
+<%= render "/stats/top_stats"%>
+
 Teams:
 <br/>
 <% @competition.clubs.each do |club|%>

@@ -11,13 +11,7 @@
 <p>Goals Scored: <%= @clubStats.seasonGoals_overall %></p>
 <p>Goals Conceded: <%= @clubStats.seasonConceded_overall %></p> 
 
-
-<% @stats_array.each do |stat| %>
-  <h4>Most <%= stat.titleize %></h4>
-  <% @club.getTopStat(stat).each_with_index do |player, i|%>
-    <p><%= i+1 %>. <%= player[:name]%>: <%= player[:num_stat] %></p>
-  <% end %>
-<% end %>
+<%= render "/stats/top_stats"%>
 
 
 
