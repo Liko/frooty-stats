@@ -1,6 +1,6 @@
-<h1>Howdy, <%= @user.username %>!</h1>
+<p>Howdy, <%= @user.username %>!</p> | 
 
-<%= link_to "Manage my account", user_path(@user) %>
+<%= link_to "Manage my account", user_path(@user) %> |
 
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>

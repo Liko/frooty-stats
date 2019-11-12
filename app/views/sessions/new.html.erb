@@ -1,10 +1,21 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %><br>
+<div class="row justify-content-center">
+    <h1>Log in</h1>
+</div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <%= form_for @user, url: login_path, method: :post do |f| %>
+                <%= f.label :username %>
+                <%= f.text_field :username, class: "form-control" %><br>
 
-    <%= f.submit "Log in" %><br>
-    Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
-<% end %>
+                <%= f.label :password %>
+                <%= f.password_field :password, class: "form-control" %><br>
+
+                <%= f.submit "Log in", class: "btn btn-primary btn-block" %><br>
+            <% end %>
+
+            <p>New user? <%= link_to(controller: 'users', action: 'new') { 'Sign up now!' } %></p>
+        </div>
+    </div>
+</div>

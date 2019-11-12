@@ -1,9 +1,21 @@
-<h1>Account management page</h1>
+<div class="row justify-content-center">
+    <h1>Account settings</h1>
+</div>
+<div class="row justify-content-center">
+    <h3>Edit your email or password</h3>
+</div>
 
-<h2>Edit your email or password</h2>
 <%= render "edit" %>
 <br>
 
-<h2>Danger Zone</h2>
-<p>Delete this account permanently</p>
-<%= button_to "Delete my acount", @user, method: :delete %>
+<div class="row justify-content-center text-danger">
+    <h3>Danger Zone</h3>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <%= button_to "Delete my acount", @user, method: :delete, class: "btn btn-danger btn-block" %><br>
+        </div>
+    </div>
+</div>
