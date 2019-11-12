@@ -19,13 +19,13 @@ class Club < ApplicationRecord
         top_players = self.getAllPlayerStats.sort_by do |stat|
             -stat.method("#{my_stat}_overall").call
 
-        end
+        end[0...5]
         
-        removeZeroStat(top_players, my_stat)
+        #removeZeroStat(top_players, my_stat)
     end
 
     def removeZeroStat(top_players, my_stat)
-        top_players[0...5].select do |stat| 
+        top_players.select do |stat| 
             stat.method("#{my_stat}_overall").call > 0
         end
     end
