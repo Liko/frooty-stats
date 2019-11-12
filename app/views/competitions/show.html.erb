@@ -6,20 +6,27 @@
         </div>
     </h1>
 
-    <h2 class="text-center p-5">
-        <div class="card p-3">
+    <div class="card p-3">
+        <h2 class="text-center p-3">
             Leading Player Stats
-        </div>
-    </h2>
+        </h2>
+    </div>
 
     <%= render "/stats/top_stats" %>
 
-    <h2 class="text-center p-5">
-        <div class="card p-3">
-            Teams
-        </div>
-    </h2>
+    <br/>
+    <div class="card p-3">
+        <h2 class="text-center p-1">
+            Clubs
+        </h2>
+    </div>
+    <br/>
 
-    <%= render "/clubs/club_primary_label" %>
+
+<div class="row">
+    <% @competition.clubs.each do |club|%>
+    <%= render "/clubs/club_primary_label", :club => club %>
+   <% end %>
+</div>
 
 </div>
