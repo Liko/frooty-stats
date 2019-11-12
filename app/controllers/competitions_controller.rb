@@ -22,11 +22,16 @@ class CompetitionsController < ApplicationController
             {"seasonGoals_overall" => "Goals Scored"},
             {"seasonConceded_overall" => "Goals Conceded"},  
             {"seasonWinsNum_overall" => "Wins"}, 
+            {"seasonDrawsNum_overall" => "Draws"},
+            {"seasonLossesNum_overall" => "Losses"},
             {"average_attendance_home" => "Average Attendance"}, 
+            {"shotsTotal_overall" => "Shots Taken"},
             {"shotsOnTargetTotal_overall" => "Shots on Target"}, 
             {"foulsTotal_overall" => "Fouls Made"}, 
             {"offsidesTotal_overall" => "Offsides"},
-            {"seasonCS_overall" => "Clean Sheets"}
+            {"seasonCS_overall" => "Clean Sheets"},
+            {"possessionAVG_overall" => "Ball Possession"},
+            {"cornersTotal_overall" => "Corners Taken"}
         ]
 
         @top_x = 10
