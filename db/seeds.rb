@@ -14,6 +14,7 @@ def run
     clubs = seed_clubs(data)
     players = seed_players(data)
     player_stats = seed_player_stats(data)
+    club_stats = seed_club_stats(data)
     seed_users
   
 end
@@ -36,6 +37,9 @@ def remove_old_seeds
 
     PlayerStat.destroy_all
     puts "Player stats cleared"
+
+    ClubStat.destroy_all
+    puts "Club stats cleared"
 
     User.destroy_all
     puts "Users cleared"
@@ -127,6 +131,32 @@ def seed_player_stats(data)
         )
     end
     puts "Player Stats seeded"
+end
+
+def seed_club_stats(data)
+    club_stats = data[:club_stats_array]
+    club_stats.each do |c|
+        ClubStat.create(
+            club_id: Club.find_by(fs_club_id:c[:fs_club_id]).id,
+            seasonGoals_overall: c[:seasonGoals_overall],
+            seasonConceded_overall: c[:seasonConceded_overall],
+            seasonWinsNum_overall: c[:seasonWinsNum_overall],
+            seasonDrawsNum_overall: c[:seasonDrawsNum_overall],
+            seasonLossesNum_overall: c[:seasonLossesNum_overall],
+            seasonMatchesPlayed_overall: c[:seasonMatchesPlayed_overall],
+            seasonCS_overall: c[:seasonCS_overall],
+            leaguePosition_overall: c[:leaguePosition_overall],
+            average_attendance_home: c[:average_attendance_home],
+            cornersTotal_overall: c[:cornersTotal_overall],
+            shotsTotal_overall: c[:shotsTotal_overall],
+            shotsOnTargetTotal_overall: c[:shotsOnTargetTotal_overall],
+            possessionAVG_overall: c[:possessionAVG_overall],
+            foulsTotal_overall: c[:foulsTotal_overall],
+            offsidesTotal_overall: c[:offsidesTotal_overall]
+        )
+    end
+    puts "Club Stats seeded"
+end
 
 def seed_users
     users_arr = [

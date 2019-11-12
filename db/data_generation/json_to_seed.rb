@@ -15,6 +15,7 @@ def model_data(data_hash)
     position_hash = getPositions
     player_array = getPlayers(data_hash)
     player_stats_array = getPlayerStats(data_hash)
+    club_stats_array = getClubStats(data_hash)
 
     data = {
         :country_hash => country_hash,
@@ -23,10 +24,9 @@ def model_data(data_hash)
         :club_array => club_array,
         :position_hash => position_hash, 
         :player_array => player_array,
-        :player_stats_array => player_stats_array
+        :player_stats_array => player_stats_array,
+        :club_stats_array => club_stats_array
     }
-
-  
 end
 
 def getCountries(data_hash)
@@ -137,6 +137,33 @@ def getPlayerStats(data_hash)
         player_stats_array << player
     end
     player_stats_array
+end
+
+def getClubStats(data_hash)
+    club_stats_array = []
+    club_stats_hash = data_hash["teams"]["data"]
+
+    club_stats_hash.map do |c|
+        club = {}
+        club[:fs_club_id] = c["id"]
+        club[:seasonGoals_overall] = c["stats"]["seasonGoals_overall"]
+        club[:seasonConceded_overall] = c["stats"]["seasonConceded_overall"]
+        club[:seasonWinsNum_overall] = c["stats"]["seasonWinsNum_overall"]
+        club[:seasonDrawsNum_overall] = c["stats"]["seasonDrawsNum_overall"]
+        club[:seasonLossesNum_overall] = c["stats"]["seasonLossesNum_overall"]
+        club[:seasonMatchesPlayed_overall] = c["stats"]["seasonMatchesPlayed_overall"]
+        club[:seasonCS_overall] = c["stats"]["seasonCS_overall"]
+        club[:leaguePosition_overall] = c["stats"]["leaguePosition_overall"]
+        club[:average_attendance_home] = c["stats"]["average_attendance_home"]
+        club[:cornersTotal_overall] = c["stats"]["cornersTotal_overall"]
+        club[:shotsTotal_overall] = c["stats"]["shotsTotal_overall"]
+        club[:shotsOnTargetTotal_overall] = c["stats"]["shotsOnTargetTotal_overall"]
+        club[:possessionAVG_overall] = c["stats"]["possessionAVG_overall"]
+        club[:foulsTotal_overall] = c["stats"]["foulsTotal_overall"]
+        club[:offsidesTotal_overall] = c["stats"]["offsidesTotal_overall"]
+        club_stats_array << club
+    end
+    club_stats_array
 end
 
 
