@@ -10,5 +10,34 @@ class Club < ApplicationRecord
     has_many :favourites
     has_many :users, through: :favourites
 
+
+    def getAllPlayerStats
+        self.players.map{|player|player.playerStat}
+    end
+
+    def sortByTopStat(my_stat)
+        top_players = self.getAllPlayerStats.sort_by do |stat|
+            -stat.method("#{my_stat}_overall").call
+
+        end[0...5]
+        
+        #removeZeroStat(top_players, my_stat)
+    end
+
+    def removeZeroStat(top_players, my_stat)
+        top_players.select do |stat| 
+            stat.method("#{my_stat}_overall").call > 0
+        end
+    end
+
+    def getTopStat(my_stat)
+        self.sortByTopStat(my_stat).map do |stat|
+            {
+                :name => stat.player.name, 
+                :num_stat => stat.method("#{my_stat}_overall").call           
+            }
+        end
+    end
+
   
 end
