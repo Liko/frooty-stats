@@ -1,28 +1,29 @@
 class ClubsController < ApplicationController
 
-def index
-  @clubs = Club.all
-end
+  def index
+    @clubs = Club.all
+  end
  
-def show
-    @user = User.find(session[:user_id])
-    @club = Club.find(params[:id]) 
-    @favourited = User.favourited(session[:user_id], params[:id])
-    @players = @club.players.sort_by{|player| player.position_id}
+  def show
+      @user = User.find(session[:user_id])
+      @club = Club.find(params[:id]) 
+      @favourited = User.favourited(session[:user_id], params[:id])
+      @players = @club.players.sort_by{|player| player.position_id}
 
-    @fav = Favourite.new
+      @fav = Favourite.new
 
-    @clubStats = @club.clubStat
-    @parent = @club
+      @clubStats = @club.clubStat
+      @parent = @club
 
-    @player_stats_array = [
-      "goals_overall", "assists_overall", "yellow_cards_overall", "red_cards_overall"
-    ]
+      @player_stats_array = [
+        {"goals_overall" => "Goals Scored"},
+        {"assists_overall" => "Assists Made"},
+        {"yellow_cards_overall" => "Yellow Cards"},
+        {"red_cards_overall" => "Red Cards"} 
+      ]
 
-    @top_x = 5
-
-
-end
+      @top_x = 5
+  end
 
 
 end

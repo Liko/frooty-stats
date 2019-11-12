@@ -9,11 +9,24 @@ class CompetitionsController < ApplicationController
         @parent = @competition
 
         @player_stats_array = [
-            "goals_overall", "assists_overall", "yellow_cards_overall", "minutes_played_overall", "penalty_goals", "penalty_misses", "red_cards_overall" 
-        ]
+            {"goals_overall" => "Goals Scored"},
+            {"assists_overall" => "Assists Made"},
+            {"penalty_goals" => "Penalties Scored"},
+            {"penalty_misses" => "Penalties Missed"},
+            {"yellow_cards_overall" => "Yellow Cards"},
+            {"red_cards_overall" => "Red Cards"},
+            {"minutes_played_overall" => "Minutes Played"}
+          ]
 
         @club_stats_array = [
-            "seasonGoals_overall", "seasonConceded_overall",  "seasonWinsNum_overall", "average_attendance_home", "shotsOnTargetTotal_overall", "foulsTotal_overall", "offsidesTotal_overall", "seasonCS_overall", 
+            {"seasonGoals_overall" => "Goals Scored"},
+            {"seasonConceded_overall" => "Goals Conceded"},  
+            {"seasonWinsNum_overall" => "Wins"}, 
+            {"average_attendance_home" => "Average Attendance"}, 
+            {"shotsOnTargetTotal_overall" => "Shots on Target"}, 
+            {"foulsTotal_overall" => "Fouls Made"}, 
+            {"offsidesTotal_overall" => "Offsides"},
+            {"seasonCS_overall" => "Clean Sheets"}
         ]
 
         @top_x = 10
