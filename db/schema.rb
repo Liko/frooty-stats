@@ -10,11 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_144047) do
+ActiveRecord::Schema.define(version: 2019_11_12_102103) do
 
   create_table "club_colors", force: :cascade do |t|
     t.integer "club_id"
     t.integer "color_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "club_stats", force: :cascade do |t|
+    t.integer "club_id"
+    t.integer "seasonGoals_overall"
+    t.integer "seasonConceded_overall"
+    t.integer "seasonWinsNum_overall"
+    t.integer "seasonDrawsNum_overall"
+    t.integer "seasonLossesNum_overall"
+    t.integer "seasonMatchesPlayed_overall"
+    t.integer "seasonCS_overall"
+    t.integer "leaguePosition_overall"
+    t.integer "average_attendance_home"
+    t.integer "cornersTotal_overall"
+    t.integer "shotsTotal_overall"
+    t.integer "shotsOnTargetTotal_overall"
+    t.integer "possessionAVG_overall"
+    t.integer "foulsTotal_overall"
+    t.integer "offsidesTotal_overall"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -81,6 +102,22 @@ ActiveRecord::Schema.define(version: 2019_11_11_144047) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "player_stats", force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "appearances_overall"
+    t.integer "minutes_played_overall"
+    t.integer "goals_overall"
+    t.integer "clean_sheets_overall"
+    t.integer "conceded_overall"
+    t.integer "penalty_goals"
+    t.integer "penalty_misses"
+    t.integer "assists_overall"
+    t.integer "yellow_cards_overall"
+    t.integer "red_cards_overall"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.string "shorthand"
@@ -90,6 +127,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_144047) do
     t.integer "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "fs_player_id"
   end
 
   create_table "positions", force: :cascade do |t|
