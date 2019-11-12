@@ -12,28 +12,12 @@
 <p>Goals Conceded: <%= @clubStats.seasonConceded_overall %></p> 
 
 
-<h4>Top Scorers</h4>
-<% @club.getTopScorers.each_with_index do |player, i|%>
-  <p><%= i+1 %>: <%= player[:name]%>: <%= player[:num_points] %></p>
+<% @stats_array.each do |stat| %>
+  <h4>Most <%= stat.titleize %></h4>
+  <% @club.getTopStat(stat).each_with_index do |player, i|%>
+    <p><%= i+1 %>. <%= player[:name]%>: <%= player[:num_stat] %></p>
+  <% end %>
 <% end %>
-
-<h4>Top Assisters</h4>
-<% @club.getTopAssisters.each_with_index do |player, i|%>
-  <p><%= i+1 %>: <%= player[:name]%>: <%= player[:num_points] %></p>
-<% end %>
-
-<h4>Most Yellows</h4>
-<% @club.getTopYellowCards.each_with_index do |player, i|%>
-  <p><%= i+1 %>: <%= player[:name]%>: <%= player[:num_points] %></p>
-<% end %>
-
-<h4>Most Reds</h4>
-<% @club.getTopRedCards.each_with_index do |player, i|%>
-  <p><%= i+1 %>: <%= player[:name]%>: <%= player[:num_points] %></p>
-<% end %>
-
-
-
 
 
 

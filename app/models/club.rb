@@ -15,54 +15,26 @@ class Club < ApplicationRecord
         self.players.map{|player|player.playerStat}
     end
 
-    def sortByTopScorers
-        self.getAllPlayerStats.sort_by{|stat|-stat.goals_overall}[0...5].select{|stat|stat.goals_overall > 0} 
+    def sortByTopStat(my_stat)
+        top_players = self.getAllPlayerStats.sort_by do |stat|
+            -stat.method("#{my_stat}_overall").call
+
+        end
+        
+        removeZeroStat(top_players, my_stat)
     end
 
-    def getTopScorers
-        self.sortByTopScorers.map do |stat|
-            {
-                :name => stat.player.name, 
-                :num_points => stat.goals_overall
-            }
+    def removeZeroStat(top_players, my_stat)
+        top_players[0...5].select do |stat| 
+            stat.method("#{my_stat}_overall").call > 0
         end
     end
 
-    def sortByTopAssisters
-        self.getAllPlayerStats.sort_by{|stat|-stat.assists_overall}[0...5].select{|stat|stat.assists_overall > 0} 
-    end
-
-    def getTopAssisters
-        self.sortByTopAssisters.map do |stat|
+    def getTopStat(my_stat)
+        self.sortByTopStat(my_stat).map do |stat|
             {
                 :name => stat.player.name, 
-                :num_points => stat.assists_overall
-            }
-        end
-    end
-
-    def sortByTopYellowCards
-        self.getAllPlayerStats.sort_by{|stat|-stat.yellow_cards_overall}[0...5].select{|stat|stat.yellow_cards_overall > 0} 
-    end
-
-    def getTopYellowCards
-        self.sortByTopYellowCards.map do |stat|
-            {
-                :name => stat.player.name, 
-                :num_points => stat.yellow_cards_overall
-            }
-        end
-    end
-
-    def sortByTopRedCards
-        self.getAllPlayerStats.sort_by{|stat|-stat.red_cards_overall}[0...5].select{|stat|stat.red_cards_overall > 0} 
-    end
-
-    def getTopRedCards
-        self.sortByTopRedCards.map do |stat|
-            {
-                :name => stat.player.name, 
-                :num_points => stat.red_cards_overall
+                :num_stat => stat.method("#{my_stat}_overall").call           
             }
         end
     end
