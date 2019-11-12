@@ -15,7 +15,10 @@
   </div> 
   <br/>
 
-  <%= render "/stats/top_player_stats"%>
+  <%= render "/stats/top_stats", {
+      :items => :players,
+      :stats_array => @player_stats_array
+  } %>
 
 
 

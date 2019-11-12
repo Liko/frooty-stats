@@ -15,7 +15,7 @@ def show
     @clubStats = @club.clubStat
     @parent = @club
 
-    @stats_array = [
+    @player_stats_array = [
       "goals_overall", "assists_overall", "yellow_cards_overall", "red_cards_overall"
     ]
 

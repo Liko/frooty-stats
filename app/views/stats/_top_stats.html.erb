@@ -1,6 +1,6 @@
 
 <div class="row">
-    <% @stats_array.each do |stat| %>
+    <% stats_array.each do |stat| %>
     <div class="card col-12 col-md-5 m-3 mx-auto">
         <h4 class="mx-auto m-3">Most <%= stat.titleize %></h4>
 
@@ -9,16 +9,16 @@
             <tr>
                 <th scope="col"></th>
                 <th scope="col">#</th>
-                <th scope="col">Player Name</th>
+                <th scope="col"><%= items.to_s.titleize.singularize%> Name</th>
                 <th scope="col"><%= stat.titleize %></th>
             </tr>
             <tbody>
-            <% @parent.getTopStat(stat, @top_x).each_with_index do |player, i|%>
+            <% @parent.getTopStat(stat, @top_x, items).each_with_index do |item, i|%>
                 <tr>
-                    <td><%= image_tag player[:image], size: "25x25" if @parent.class == Competition %></td>
+                    <td><%= image_tag item[:image], size: "25x25" if @parent.class == Competition %></td>
                     <td><%= i+1 %>. </td>
-                    <td><%= link_to player[:name], player_path(player[:id]) %></td>  
-                    <td><%= player[:num_stat] %>
+                    <td><%= item[:name] %></td>  
+                    <td><%= item[:num_stat] %>
                 </tr>   
             <% end %>
             </tbody>
