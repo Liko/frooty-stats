@@ -1,0 +1,34 @@
+<h1> <%= "#{@player.name}" %> </h1>
+
+<p> <%= "#{@player.position.name}" %> </p>
+
+<p> <%= "#{@player.birthdate}" %> </p>
+
+<table>
+  <thead>
+    <tr>
+      
+      <th>Club</th>
+      <th>Age</th>
+      <th>Position</th>
+      <th>Country</th>
+      <th colspan="3"></th>
+
+            <tr>
+        <td><%= link_to @player.country.name, country_path(@player.country) %></td>
+        <td><%= @player.age %></td>
+        <td><%= @player.position.name %></td>
+        <td><%= link_to @player.club.name, club_path(@player.club) %></td>  
+      </tr>
+
+    </tr>
+  </thead>
+  </table> 
+
+
+<br>
+
+  <%= link_to 'Back', url_for(:back) %>
+
+</br>
+

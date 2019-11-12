@@ -9,7 +9,9 @@ def show
     @club = Club.find(params[:id]) 
     @favourited = User.favourited(session[:user_id], params[:id])
     @players = @club.players.sort_by{|player| player.position_id}
+
     @fav = Favourite.new
+
     @clubStats = @club.clubStat
     @parent = @club
 
@@ -18,6 +20,7 @@ def show
     ]
 
     @top_x = 5
+
 
 end
 
