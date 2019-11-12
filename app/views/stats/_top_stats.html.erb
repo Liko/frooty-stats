@@ -2,11 +2,27 @@
 <div class="row">
     <% @stats_array.each do |stat| %>
     <div class="card col-12 col-md-5 m-3 mx-auto">
-    <h4 class="mx-auto m-3">Most <%= stat.titleize %></h4>
-    
-    <% @parent.getTopStat(stat, @top_x).each_with_index do |player, i|%>
-        <p><%= image_tag player[:image], size: "20x20" if @parent.class == Competition %>&nbsp;&nbsp;<%= i+1 %>. <%= player[:name]%>: <%= player[:num_stat] %></p>
-    <% end %>
+        <h4 class="mx-auto m-3">Most <%= stat.titleize %></h4>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">#</th>
+                <th scope="col">Player Name</th>
+                <th scope="col"><%= stat.titleize %></th>
+            </tr>
+            <tbody>
+            <% @parent.getTopStat(stat, @top_x).each_with_index do |player, i|%>
+                <tr>
+                    <td><%= image_tag player[:image], size: "20x20" if @parent.class == Competition %></td>
+                    <td><%= i+1 %>. </td>
+                    <td><%= player[:name]%></td>  
+                    <td><%= player[:num_stat] %>
+                </tr>   
+            <% end %>
+            </tbody>
+        </table>
     </div>
     <% end %>
 </div>
