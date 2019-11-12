@@ -13,6 +13,7 @@ def run
     stadia = seed_stadia(data)
     clubs = seed_clubs(data)
     players = seed_players(data)
+    seed_users
 end
 
 def remove_old_seeds
@@ -31,6 +32,8 @@ def remove_old_seeds
     Player.destroy_all
     puts "Players cleared"
 
+    User.destroy_all
+    puts "Users cleared"
 end
 
 def seed_countries(data)
@@ -97,6 +100,15 @@ def seed_players(data)
         )
     end
     puts "Players seeded"
+end
+
+def seed_users
+    users_arr = [
+        {username: "testuser1", email: "user1@gmail.com", password: "user1", password_confirmation: "user1"},
+        {username: "testuser2", email: "user2@gmail.com", password: "user2", password_confirmation: "user2"},
+        {username: "testuser3", email: "user3@gmail.com", password: "user3", password_confirmation: "user3"}
+    ]
+    User.create(users_arr)
 end
 
 run

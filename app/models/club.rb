@@ -6,6 +6,8 @@ class Club < ApplicationRecord
     # has_many :goals
     # has_many :clubColors
     # has_many :colors, through: :clubColors
+    has_many :favourites
+    has_many :users, through: :favourites
 
   
 end

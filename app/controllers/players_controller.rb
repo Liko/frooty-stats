@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
 
     def index
-        @players = Player.all 
+        @players = Player.all.sort_by{|player| player.position_id}
     end
 
     def show
