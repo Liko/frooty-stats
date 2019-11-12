@@ -6,7 +6,7 @@ module  TopStats
  
         def getAllStats(items)
 
-            self.send(items).map{|item|item.send("#{items[0...-1]}Stat")}
+            self.send(items).map{|item|item.send("#{items.to_s.singularize}Stat")}
         end
     
         def sortByTopStat(my_stat, top_x, items)
