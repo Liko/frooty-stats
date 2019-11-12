@@ -5,9 +5,12 @@
 <p><%= @club.competition.name %></p>
 <p>Stadium: <%= @club.stadium.name %></p>
 
+<%= render "/favourites/add_or_remove" %>
+
+
 <h2> <%= "#{@club.name}" %> Players </h2>
 
- 
+
 <table>
   <thead>
     <tr>

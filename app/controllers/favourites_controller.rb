@@ -1,27 +1,20 @@
 class FavouritesController < ApplicationController
-    
-    def index
-        @favs = Favourite.all
-    end
-
-    def show
-        @fav = Favourite.find(params[:id])
-    end
 
     def new
-        @fav = Favourite.new
-        @clubs = Club.all
+        @favourite = Favourite.new
     end
 
     def create
-        @fav = Favourite.create(favourite_params)
-        redirect_to favourite_path(@fav)
+        @club = Club.find(params[:favourite][:club_id])
+        Favourite.create(user_id: session[:user_id], club_id: @club.id)
+        redirect_to club_path(@club)
     end
 
     def destroy
-        @fav = Favourite.find(params[:id])
-        @fav.destroy
-        redirect_to _path
+        @club = Club.find(params[:id])
+        @favourited = User.favourited(session[:user_id], params[:id])
+        @favourited.destroy
+        redirect_to club_path(@club)
     end
 
     private
