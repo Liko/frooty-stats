@@ -107,8 +107,9 @@ def seed_players(data)
             birthday: p[:birthday],
             position_id: Position.find_by(name:p[:position]).id,
             club_id: Club.find_by(fs_club_id:p[:fs_club_id]).id,
-            fs_player_id: p[:fs_player_id]
-        )
+            fs_player_id: p[:fs_player_id],
+            competition_id: Competition.find_by(fs_league_id:p[:fs_competition_id]).id
+        )     
     end
     puts "Players seeded"
 end

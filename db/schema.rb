@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_102103) do
+ActiveRecord::Schema.define(version: 2019_11_12_143921) do
 
   create_table "club_colors", force: :cascade do |t|
     t.integer "club_id"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_102103) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "fs_player_id"
+    t.integer "competition_id"
   end
 
   create_table "positions", force: :cascade do |t|
