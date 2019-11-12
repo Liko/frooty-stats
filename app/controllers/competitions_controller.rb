@@ -9,7 +9,7 @@ class CompetitionsController < ApplicationController
         @parent = @competition
 
         @stats_array = [
-            "goals", "assists", "yellow_cards", "red_cards"
+            "goals_overall", "assists_overall", "yellow_cards_overall", "minutes_played_overall", "penalty_goals", "penalty_misses", "red_cards_overall" 
         ]
 
         @top_x = 10

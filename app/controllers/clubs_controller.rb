@@ -16,7 +16,7 @@ def show
     @parent = @club
 
     @stats_array = [
-      "goals", "assists", "yellow_cards", "red_cards"
+      "goals_overall", "assists_overall", "yellow_cards_overall", "red_cards_overall"
     ]
 
     @top_x = 5
