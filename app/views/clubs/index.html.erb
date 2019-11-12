@@ -1,13 +1,9 @@
-    <h1 class="text-center p-5">
-        <div class="card p-3 hoverable">
-             Club Listings
-        </div>
-    </h1>
- 
-    <div class="row">
-      <% @clubs.each do |club| %>
-        <%= render "/clubs/club_secondary_label", :club => club %>
-      <% end %>
-    </div>
+<%= render "/layouts/main_title", :content => "Club Listings" %>
+
+<div class="row">
+  <% @clubs.each do |club| %>
+    <%= render "/clubs/club_secondary_label", :club => club %>
+  <% end %>
+</div>
 
 <%= link_to 'Back', url_for(:back) %>
