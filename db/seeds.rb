@@ -3,11 +3,10 @@ require_relative 'data_generation/json_to_seed'
 
 
 def run
-    # remove_old_seeds
+    remove_old_seeds
 
     data = run_json_to_seed
     
-
     countries = seed_countries(data)
     positions = seed_positions(data)
     competitions = seed_competitions(data)
@@ -15,6 +14,8 @@ def run
     clubs = seed_clubs(data)
     players = seed_players(data)
     player_stats = seed_player_stats(data)
+    seed_users
+  
 end
 
 def remove_old_seeds
@@ -35,6 +36,9 @@ def remove_old_seeds
 
     PlayerStat.destroy_all
     puts "Player stats cleared"
+
+    User.destroy_all
+    puts "Users cleared"
 
 end
 
@@ -124,6 +128,13 @@ def seed_player_stats(data)
     end
     puts "Player Stats seeded"
 
+def seed_users
+    users_arr = [
+        {username: "testuser1", email: "user1@gmail.com", password: "user1", password_confirmation: "user1"},
+        {username: "testuser2", email: "user2@gmail.com", password: "user2", password_confirmation: "user2"},
+        {username: "testuser3", email: "user3@gmail.com", password: "user3", password_confirmation: "user3"}
+    ]
+    User.create(users_arr)
 end
 
 run
