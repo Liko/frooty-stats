@@ -10,6 +10,12 @@ def show
     @favourited = User.favourited(session[:user_id], params[:id])
     @players = @club.players.sort_by{|player| player.position_id}
     @fav = Favourite.new
+
+    @clubStats = @club.clubStat
+
+    
+
+
 end
 
 
