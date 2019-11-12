@@ -8,14 +8,20 @@
   <div class="text-center mp-3">
     <%= render "/favourites/add_or_remove" %>
   </div>
-  <br/>
+  
+  <%= render "/layouts/main_title", :content => "Club Stats" %>
 
   <div class="text-center">
     <%= render "/clubs/club_facts" %>
   </div> 
   <br/>
 
-  <%= render "/stats/top_player_stats"%>
+  <%= render "/layouts/main_title", :content => "Player Stats" %>
+
+  <%= render "/stats/top_stats", {
+      :items => :players,
+      :stats_array => @player_stats_array
+  } %>
 
 
 

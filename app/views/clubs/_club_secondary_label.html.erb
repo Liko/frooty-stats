@@ -1,0 +1,14 @@
+<div class="card col-12 col-md-5 m-3 mx-auto hoverable">
+    <div class="mx-auto pt-4 pb-3">
+        <h5><%=link_to club.name, club %></h5>
+    </div>
+    <div class="mx-auto pb-3 animated jello">
+        <%= image_tag club.image, size: "60x60" %>
+    </div>
+    <div class="mx-auto pb-3">
+        <%= link_to club.competition.name, competition_path(club.competition) %>
+    </div>
+    <div class="mx-auto pb-4">
+        <%= club.country.name %>
+    </div>
+</div>
