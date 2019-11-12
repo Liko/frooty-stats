@@ -14,6 +14,7 @@ def model_data(data_hash)
     club_array = getClubs(data_hash)
     position_hash = getPositions
     player_array = getPlayers(data_hash)
+    player_stats_array = getPlayerStats(data_hash)
 
     data = {
         :country_hash => country_hash,
@@ -21,7 +22,8 @@ def model_data(data_hash)
         :competition_array => competition_array,
         :club_array => club_array,
         :position_hash => position_hash, 
-        :player_array => player_array
+        :player_array => player_array,
+        :player_stats_array => player_stats_array
     }
 
   
@@ -103,9 +105,9 @@ def getPlayers(data_hash)
         player[:birthday] = p["birthday"]
         player[:position] = p["position"]
         player[:fs_club_id] = p["club_team_id"]
+        player[:fs_player_id] = p["id"]
         player_array << player
     end
-    #still potentially missing player stats like goals, assists etc
     player_array
 end
 
@@ -113,6 +115,28 @@ def check_edge_case_nationalities(p)
     if p["nationality"] == "Côte d'Ivoire"
         p["nationality"] = "Ivory Coast"
     end
+end
+
+def getPlayerStats(data_hash)
+    player_stats_array = []
+    player_stats_hash = data_hash["players"]["data"]
+
+    player_stats_hash.map do |p|
+        player = {}
+        player[:fs_player_id] = p["id"]
+        player[:appearances_overall] = p["appearances_overall"]
+        player[:minutes_played_overall] = p["minutes_played_overall"]
+        player[:goals_overall] = p["goals_overall"]
+        player[:clean_sheets_overall] = p["clean_sheets_overall"]
+        player[:conceded_overall] = p["conceded_overall"]
+        player[:penalty_goals] = p["penalty_goals"]
+        player[:penalty_misses] = p["penalty_misses"]
+        player[:assists_overall] = p["assists_overall"]
+        player[:yellow_cards_overall] = p["yellow_cards_overall"]
+        player[:red_cards_overall] = p["red_cards_overall"]
+        player_stats_array << player
+    end
+    player_stats_array
 end
 
 

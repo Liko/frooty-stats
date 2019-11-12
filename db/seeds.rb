@@ -3,9 +3,10 @@ require_relative 'data_generation/json_to_seed'
 
 
 def run
-    remove_old_seeds
+    # remove_old_seeds
 
     data = run_json_to_seed
+    
 
     countries = seed_countries(data)
     positions = seed_positions(data)
@@ -13,6 +14,7 @@ def run
     stadia = seed_stadia(data)
     clubs = seed_clubs(data)
     players = seed_players(data)
+    player_stats = seed_player_stats(data)
 end
 
 def remove_old_seeds
@@ -30,6 +32,9 @@ def remove_old_seeds
 
     Player.destroy_all
     puts "Players cleared"
+
+    PlayerStat.destroy_all
+    puts "Player stats cleared"
 
 end
 
@@ -93,10 +98,32 @@ def seed_players(data)
             country_id: Country.find_by(name:p[:country]).id,
             birthday: p[:birthday],
             position_id: Position.find_by(name:p[:position]).id,
-            club_id: Club.find_by(fs_club_id:p[:fs_club_id]).id
+            club_id: Club.find_by(fs_club_id:p[:fs_club_id]).id,
+            fs_player_id: p[:fs_player_id]
         )
     end
     puts "Players seeded"
+end
+
+def seed_player_stats(data)
+    player_stats = data[:player_stats_array]
+    player_stats.each do |p|
+        PlayerStat.create(
+            player_id: Player.find_by(fs_player_id:p[:fs_player_id]).id,
+            appearances_overall: p[:appearances_overall],
+            minutes_played_overall: p[:minutes_played_overall],
+            goals_overall: p[:goals_overall],
+            clean_sheets_overall: p[:clean_sheets_overall],
+            conceded_overall: p[:conceded_overall],
+            penalty_goals: p[:penalty_goals],
+            penalty_misses: p[:penalty_misses],
+            assists_overall: p[:assists_overall],
+            yellow_cards_overall: p[:yellow_cards_overall],
+            red_cards_overall: p[:red_cards_overall]
+        )
+    end
+    puts "Player Stats seeded"
+
 end
 
 run

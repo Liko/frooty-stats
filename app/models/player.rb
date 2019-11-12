@@ -2,7 +2,7 @@ class Player < ApplicationRecord
     belongs_to :position
     belongs_to :club
     belongs_to :country
-    belongs_to :playerStat
+    has_one :playerStat
     has_many :goals
 
     # def club_players
