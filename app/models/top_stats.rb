@@ -10,7 +10,7 @@ module  TopStats
     
         def sortByTopStat(my_stat, top_x)
             top_players = self.getAllPlayerStats.sort_by do |stat|
-                -stat.method(my_stat).call
+                -stat.send(my_stat)
     
             end[0...top_x]
             
@@ -19,7 +19,7 @@ module  TopStats
     
         def removeZeroStat(top_players, my_stat)
             top_players.select do |stat| 
-                stat.method(my_stat).call > 0
+                stat.send(my_stat) > 0
             end
         end
     
@@ -28,7 +28,7 @@ module  TopStats
                 {
                     :id => stat.player.id,
                     :name => stat.player.name, 
-                    :num_stat => stat.method(my_stat).call,
+                    :num_stat => stat.send(my_stat),
                     :image => stat.player.club.image         
                 }
             end
