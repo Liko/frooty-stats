@@ -11,10 +11,13 @@ def show
     @players = @club.players.sort_by{|player| player.position_id}
     @fav = Favourite.new
     @clubStats = @club.clubStat
+    @parent = @club
 
     @stats_array = [
       "goals", "assists", "yellow_cards", "red_cards"
     ]
+
+    @top_x = 5
 
 end
 
