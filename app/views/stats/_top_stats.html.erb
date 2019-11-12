@@ -1,28 +1,28 @@
 
 <div class="row">
     <% stats_array.each do |stat| %>
-    <div class="card col-12 col-md-5 m-3 mx-auto hoverable">
-        <h4 class="mx-auto m-3">Most <%= stat.values[0] %></h4>
+        <div class="card col-12 col-md-5 m-3 mx-auto hoverable">
+            <h4 class="mx-auto m-3">Most <%= stat.values[0] %></h4>
 
-        <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">#</th>
-                <th scope="col"><%= items.to_s.titleize.singularize%> Name</th>
-                <th scope="col"><%= stat.values[0] %></th>
-            </tr>
-            <tbody>
-            <% @parent.getTopStat(stat.keys[0], @top_x, items).each_with_index do |item, i|%>
+            <table class="table">
+            <thead>
                 <tr>
-                    <td><%= image_tag item[:image], size: "25x25" if @parent.class == Competition %></td>
-                    <td><%= i+1 %>. </td>
-                    <td><%= item[:name] %></td>  
-                    <td><%= item[:num_stat] %>
-                </tr>   
-            <% end %>
-            </tbody>
-        </table>
-    </div>
+                    <th scope="col"></th>
+                    <th scope="col">#</th>
+                    <th scope="col"><%= items.to_s.titleize.singularize%> Name</th>
+                    <th scope="col"><%= stat.values[0] %></th>
+                </tr>
+                <tbody>
+                <% @parent.getTopStat(stat.keys[0], @top_x, items).each_with_index do |item, i|%>
+                    <tr>
+                        <td><%= image_tag item[:image], size: "25x25" if @parent.class == Competition %></td>
+                        <td><%= i+1 %>. </td>
+                        <td><%= item[:name] %></td>  
+                        <td><%= item[:num_stat] %>
+                    </tr>   
+                <% end %>
+                </tbody>
+            </table>
+        </div>
     <% end %>
 </div>
