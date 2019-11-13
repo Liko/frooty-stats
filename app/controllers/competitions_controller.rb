@@ -8,7 +8,7 @@ class CompetitionsController < ApplicationController
         @competition = Competition.find(params[:id])
         @parent = @competition
 
-        @results = Match.sortResultsByDateAndCompetitionId(@competition.id)
+        @results = Match.sortResultsByRecentAndCompetitionId(@competition.id)
 
         @player_stats_array = [
             {"goals_overall" => "Goals Scored"},
