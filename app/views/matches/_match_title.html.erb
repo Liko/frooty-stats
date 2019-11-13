@@ -38,6 +38,14 @@
                     <h3><%= match.print_status%></h3>
             </div>
         </div>
+        <% if @parent == @competition %>
+            <div class="row text-center">
+                <div class="col-12 pb-5 animated jello">
+                        <p><%= link_to "See Full Stats", match_path(match)%></p>
+                </div>
+            </div>
+        <% end %>
+
 
     </div>
 </div>
