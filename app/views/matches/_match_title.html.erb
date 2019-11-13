@@ -16,21 +16,28 @@
                 <h4><%=link_to @match.away_club_name, club_path(@match.away_club) %></h4>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 text-center animated jello">
+        <div class="row text-center">
+            <div class="col-4 animated jello">
                 <%= image_tag @match.home_club.image, size: "80x80" %>
             </div>
-            <div class="col-1 text-center ">
+            <div class="col-1">
                 <h1><%=@match.home_goal_count%></h3>
             </div>
-            <div class="col-2 text-center p-2">
+            <div class="col-2 p-2">
                 <h3>-</h3>
             </div>
-            <div class="col-1 text-center ">
+            <div class="col-1">
                 <h1><%=@match.away_goal_count%></h3>
             </div>
-            <div class="col-4 text-center pb-5 animated jello">
+            <div class="col-4 pb-5 animated jello">
                 <%= image_tag @match.away_club.image, size: "80x80" %>
             </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12 pb-5 animated jello">
+                    <h3><%= @match.print_status%></h3>
+            </div>
+        </div>
+
     </div>
 </div>

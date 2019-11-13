@@ -22,4 +22,19 @@ class Match < ApplicationRecord
         date = DateTime.strptime(self.date.to_s,'%s')
         date.strftime("%R")
     end
+
+    def print_status
+        if self.status == "complete"
+            "Final Result"
+        elsif self.status == "incomplete"
+            "Yet to be Played."
+        end
+    end
+
+    def getStat(stat)
+        {
+            :team_a_stat => self.send("team_a_#{stat}"),
+            :team_b_stat => self.send("team_b_#{stat}")
+        }
+    end
 end
