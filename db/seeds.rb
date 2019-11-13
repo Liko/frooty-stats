@@ -165,12 +165,15 @@ end
 def seed_matches(data)
     matches = data[:matches_array]
     matches.each_with_index do |m, i|
+        home_club = Club.find_by(fs_club_id:m[:home_id])
+        away_club = Club.find_by(fs_club_id:m[:away_id])
+
         my_match = Match.create(
-            home_id: Club.find_by(fs_club_id:m[:home_id]).id,
-            away_id: Club.find_by(fs_club_id:m[:away_id]).id,
+            home_id: home_club.id,
+            away_id: away_club.id,
             home_goal_count: m[:home_goal_count],
             away_goal_count: m[:away_goal_count],
-            stadium_id: determineMatchStadium(m[:stadium_name]),
+            stadium_id: home_club.stadium_id,
             date: m[:date],
             attendance: m[:attendance],
             status: m[:status],
@@ -197,14 +200,6 @@ def seed_matches(data)
         )
     end
     puts "Matches seeded"
-end
-
-def determineMatchStadium(stadium_name)
-    if stadium_name == ""
-        return -1
-    else
-        return Stadium.find_by(name:stadium_name).id
-    end
 end
 
 
