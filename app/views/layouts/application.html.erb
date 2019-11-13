@@ -40,9 +40,7 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
-        </a>
+        <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
         <%= link_to "Competitions", competitions_path, :class=> "nav-link" %> 
@@ -54,23 +52,19 @@
       <%= link_to "Players", players_path, :class=> "nav-link" %> 
       </li>
 
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Favourites</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <% if @fav_clubs.empty? %>
-            <a class="dropdown-item" href="#">No favourites selected</a>
-          <% else %>
-            <% @fav_clubs.each do |club| %>
-              <%= link_to club.name, club, {class: "dropdown-item"} %>
-            <% end %>
-          <% end %>
-        </div>
-      </li>
+
+      <!-- Checks for logged-in or logged-out user -->
+      <% if session[:user_id] %>
+        <%= render "/favourites/dropdown"%>
+        <%= render "/users/dropdown"%>
+        <%= render "/users/greeting"%>
+      <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", login_path, :class=> "nav-link" %>
+          </li>
+      <% end %>
 
     </ul>
-    <!-- Links -->
 
     <form class="form-inline">
       <div class="md-form my-0">

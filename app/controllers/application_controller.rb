@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
         current_user.id != nil
     end
 
-    def require_logged_in
-        return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
-    end
-
     def favourite_clubs
         user_favs = current_user.favourites
         @fav_clubs = Club.where(id: user_favs.map(&:club_id))
