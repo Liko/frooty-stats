@@ -17,6 +17,10 @@
             aria-controls="pills-club-stats" aria-selected="false">Club Stats</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" id="pills-fixtures-tab" data-toggle="pill" href="#pills-fixtures" role="tab"
+            aria-controls="pills-fixtures" aria-selected="false">Fixtures</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" id="pills-results-tab" data-toggle="pill" href="#pills-results" role="tab"
             aria-controls="pills-results" aria-selected="false">Results</a>
         </li>
@@ -48,6 +52,17 @@
                     :items => :clubs,
                     :stats_array => @club_stats_array
                 } %>
+        </div>
+
+         <div class="tab-pane fade" id="pills-fixtures" role="tabpanel" aria-labelledby="pills-fixtures-tab">
+
+        <% @fixtures.each do |match| %>
+            <%= render "/matches/match_combo", {
+                match: match,
+                source: "competitions"
+                } %>
+        <% end %>
+                  
         </div>
 
         <div class="tab-pane fade" id="pills-results" role="tabpanel" aria-labelledby="pills-results-tab">

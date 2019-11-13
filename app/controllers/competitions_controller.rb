@@ -10,6 +10,8 @@ class CompetitionsController < ApplicationController
 
         @results = Match.sortResultsByRecentAndCompetitionId(@competition.id)
 
+        @fixtures = Match.sortFixturesByUpcomingAndCompetitionId(@competition.id)
+
         @player_stats_array = [
             {"goals_overall" => "Goals Scored"},
             {"assists_overall" => "Assists Made"},
