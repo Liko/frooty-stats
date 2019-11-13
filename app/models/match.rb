@@ -37,4 +37,8 @@ class Match < ApplicationRecord
             :team_b_stat => self.send("team_b_#{stat}")
         }
     end
+
+    def self.sortResultsByDateAndCompetitionId(competition_id)
+        sorted_matches = Match.where(competition_id: competition_id).sort_by{|match|match.date}.select{|match|match.status=="complete"}
+    end
 end

@@ -4,27 +4,27 @@
         <table class="table text-center">
             <thead>
                 <tr>
-                    <td><%= image_tag @match.home_club.image, size: "50x50" %></td>
+                    <td><%= image_tag match.home_club.image, size: "50x50" %></td>
                     <td><h4 class="pt-3">VS</h4></td>
-                    <td><%= image_tag @match.away_club.image, size: "50x50" %></td>  
+                    <td><%= image_tag match.away_club.image, size: "50x50" %></td>  
                 </tr>   
                 <tr>
-                    <th scope="col"><%= @match.home_club_name %></th>
+                    <th scope="col"><%= match.home_club_name %></th>
                     <th scope="col">-</th>
-                    <th scope="col"><%= @match.away_club_name %></th>
+                    <th scope="col"><%= match.away_club_name %></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><%= @match.home_goal_count %></td>
+                    <td><%= match.home_goal_count %></td>
                     <td>Goals</td>
-                    <td><%= @match.away_goal_count%></td>  
+                    <td><%= match.away_goal_count%></td>  
                 </tr> 
                 <% @match_stats_array.each do |stat| %>
                     <tr>
-                        <td><%= @match.getStat(stat)[:team_a_stat] %></td>
+                        <td><%= match.getStat(stat)[:team_a_stat] %></td>
                         <td><%= stat.titleize %></td>
-                        <td><%= @match.getStat(stat)[:team_b_stat] %></td>  
+                        <td><%= match.getStat(stat)[:team_b_stat] %></td>  
                     </tr>   
                 <% end %>
             </tbody>

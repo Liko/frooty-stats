@@ -16,6 +16,10 @@
             <a class="nav-link" id="pills-club-stats-tab" data-toggle="pill" href="#pills-club-stats" role="tab"
             aria-controls="pills-club-stats" aria-selected="false">Club Stats</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-results-tab" data-toggle="pill" href="#pills-results" role="tab"
+            aria-controls="pills-results" aria-selected="false">Results</a>
+        </li>
     </ul>
     </div>
 
@@ -44,6 +48,14 @@
                     :items => :clubs,
                     :stats_array => @club_stats_array
                 } %>
+        </div>
+
+        <div class="tab-pane fade" id="pills-results" role="tabpanel" aria-labelledby="pills-results-tab">
+
+        <% @results.each_with_index do |match, i| %>
+            <%= render("/matches/match_title", match: match) %>
+        <% end %>
+                  
         </div>
     </div>
     <br/>
