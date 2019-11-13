@@ -12,6 +12,10 @@ class CompetitionsController < ApplicationController
 
         @fixtures = Match.sortFixturesByUpcomingAndCompetitionId(@competition.id)
 
+        @pill_links = [
+            "clubs", "player-stats", "club-stats", "fixtures", "results", "league-table"
+        ]
+
         @player_stats_array = [
             {"goals_overall" => "Goals Scored"},
             {"assists_overall" => "Assists Made"},
