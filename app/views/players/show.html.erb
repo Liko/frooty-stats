@@ -1,8 +1,10 @@
- <%= render 'player_profile' %>
+<div class="container">
+<%= render "/layouts/main_title", :content => "Profile" %>
 
+<%= render 'player_profile' %>
 
+<%= render "/layouts/main_title", :content => "Stats" %>
 
+<%= render 'player_facts' %>
 
-
-
-
+<%= link_to 'Back', url_for(:back) %>
