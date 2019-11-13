@@ -12,6 +12,10 @@ class CompetitionsController < ApplicationController
 
         @fixtures = Match.sortFixturesByUpcomingAndCompetitionId(@competition.id)
 
+        @pill_links = [
+            "clubs", "player-stats", "club-stats", "fixtures", "results", "league-table"
+        ]
+
         @player_stats_array = [
             {"goals_overall" => "Goals Scored"},
             {"assists_overall" => "Assists Made"},
@@ -40,6 +44,12 @@ class CompetitionsController < ApplicationController
 
         @top_x = 10
 
+        @page_size = 20
+        @total_results_pages = (@results.size/@page_size) + 1
+        @results_page_count = 1
+
+        @total_fixtures_pages = (@fixtures.size/@page_size) + 1
+        @fixtures_page_count = 1
 
     end
 end
