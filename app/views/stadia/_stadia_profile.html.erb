@@ -1,0 +1,16 @@
+<div class="card col-12 col-md-5 m-3 mx-auto hoverable">
+    <div class="mx-auto pt-4 pb-3">
+        <% @clubs.each do |club| %>
+       
+        <h5> <%= club.stadium.name  %></h5>
+        <p> <%= image_tag club.image %> </p>
+        <p> Country: <%= club.country.name %> </p>
+        <p> Average Attendance: <%= club.clubStat.average_attendance_home %></p>
+        <p> Club page: <%= link_to club.name, club %> </p>
+        <% end %>
+    </div>
+
+    </div>
+
+  
+    
