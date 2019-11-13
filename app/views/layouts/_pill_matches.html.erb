@@ -1,0 +1,34 @@
+<div class="card m-3 hoverable">
+    <ul class="nav nav-pills p-3 justify-content-center" id="pills-tab" role="tablist">
+        <% total_matches_pages.times do |page_no|%>
+            <%= render "/layouts/pill_nav_link", {
+                page_no: page_no+1,
+                id: id     
+                } %>
+        <% end %>
+    </ul>
+</div>
+
+<div class="tab-content pt-2 pl-1" id="pills-tabContent">
+
+    <% matches.each_with_index do |match, match_no| %>  
+
+        <% if match_no % @page_size == 0 %>
+            <div class="tab-pane fade <%="show active" if matches_page_count == 1%>" id=<%="pills-#{id}-#{matches_page_count}"%> role="tabpanel" aria-labelledby=<%="pills-#{id}-#{matches_page_count}-tab"%>>
+
+            <% matches_page_count += 1 %>
+        <% end %>
+
+        <%= render "/matches/match_combo", {
+            match: match,
+            source: "competitions"
+        } %>
+
+         <% if match_no % @page_size == @page_size-1 %>
+            </div>
+         <% end %>
+
+    <% end %>
+
+    </div>
+</div>
