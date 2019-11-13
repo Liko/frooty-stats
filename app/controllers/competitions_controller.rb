@@ -51,6 +51,5 @@ class CompetitionsController < ApplicationController
         @total_fixtures_pages = (@fixtures.size/@page_size) + 1
         @fixtures_page_count = 1
 
-
     end
 end

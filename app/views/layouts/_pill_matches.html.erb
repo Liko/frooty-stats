@@ -10,9 +10,7 @@
 </div>
 
 <div class="tab-content pt-2 pl-1" id="pills-tabContent">
-
     <% matches.each_with_index do |match, match_no| %>  
-
         <% if match_no % @page_size == 0 %>
             <div class="tab-pane fade <%="show active" if matches_page_count == 1%>" id=<%="pills-#{id}-#{matches_page_count}"%> role="tabpanel" aria-labelledby=<%="pills-#{id}-#{matches_page_count}-tab"%>>
 
@@ -29,6 +27,5 @@
          <% end %>
 
     <% end %>
-
     </div>
 </div>
