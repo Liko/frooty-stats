@@ -1,0 +1,38 @@
+<div class="p-3">
+    <div class="card col-10 mx-auto hoverable">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Club</td>
+                    <td>P</td>
+                    <td>W</td>
+                    <td>D</td>
+                    <td>L</td>
+                    <td>GF</td>
+                    <td>GA</td>
+                    <td>GD</td>
+                    <td>Pts</td>    
+                </tr>   
+            </thead>
+            <tbody>
+                <% @competition.getClubStatsByLeaguePosition.each do |clubStat| %>
+                    <tr>
+                        <td><%= clubStat.leaguePosition_overall %></td>
+                        <td><%= image_tag clubStat.club.image, size: "20x20"  %> <%= clubStat.club.name %></td>
+                        <td><%= clubStat.seasonMatchesPlayed_overall %></td>
+                        <td><%= clubStat.seasonWinsNum_overall %></td>
+                        <td><%= clubStat.seasonDrawsNum_overall %></td>
+                        <td><%= clubStat.seasonLossesNum_overall %></td> 
+                        <td><%= clubStat.seasonGoals_overall %></td>  
+                        <td><%= clubStat.seasonConceded_overall %></td> 
+                        <td><%= clubStat.seasonGoalDifference_overall %></td> 
+                        <td><%= clubStat.seasonPoints_overall %></td>  
+                    </tr>   
+                <% end %>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
