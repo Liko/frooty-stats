@@ -41,4 +41,8 @@ class Match < ApplicationRecord
     def self.sortResultsByRecentAndCompetitionId(competition_id)
         sorted_matches = Match.where(competition_id: competition_id).sort_by{|match|-match.date}.select{|match|match.status=="complete"}
     end
+
+    def self.sortFixturesByUpcomingAndCompetitionId(competition_id)
+        sorted_matches = Match.where(competition_id: competition_id).sort_by{|match|match.date}.select{|match|match.status=="incomplete"}
+    end
 end

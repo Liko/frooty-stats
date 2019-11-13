@@ -1,22 +1,6 @@
 <div class="p-5">
     <div class="card col-10 pt-3 mx-auto hoverable">
 
-        <div class="row p-1 text-center">
-            <div class="col-12">
-                <p>Gameweek <%= match.game_week%></p>
-            </div>
-        </div>
-
-        <div class="row p-1 text-center">
-            <div class="col-12">
-                <p><%= match.real_time%> - <%= match.real_date%></p>
-            </div>
-        </div>
- 
-        <div class="row p-1 text-center">
-            <div class="col-12">
-                <p><%= match.stadium.name%> - Attendance: <%= number_with_delimiter(match.attendance)%></p>
-            </div>
-        </div>
+        <%= render "/matches/match_details_contents", match: @match %>
     </div>
 </div>
