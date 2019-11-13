@@ -1,0 +1,10 @@
+<div class="card col-12 col-md-10 mx-auto hoverable">
+    <p>Country: <%= @club.country.name %></p>
+    <p>Founding Year: <%= @club.founded %></p>
+    <p><%= link_to @club.competition.name, @club.competition %></p>
+    <p>League Position: <%= @clubStats.leaguePosition_overall%></p>
+    <p>Stadium: <%= @club.stadium.name %></p>
+    <p>Average Attendance: <%= @clubStats.average_attendance_home %></p>
+    <p>Goals Scored: <%= @clubStats.seasonGoals_overall %></p>
+    <p>Goals Conceded: <%= @clubStats.seasonConceded_overall %></p>
+</div>

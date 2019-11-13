@@ -1,19 +1,27 @@
+<div class="container">
 
- <%= render 'club_profile' %>
-<h1><%= @club.name %> <%= image_tag @club.image %></h1>
+  <div class="row">
+    <%= render "/clubs/club_primary_label", :club => @club %>
+  </div>
+  <br/>
 
-<%= render "/favourites/add_or_remove" %>
+  <div class="text-center mp-3">
+    <%= render "/favourites/add_or_remove" %>
+  </div>
+  
+  <%= render "/layouts/main_title", :content => "Club Stats" %>
 
-<p>Country: <%= @club.country.name %></p>
-<p>Founding Year: <%= @club.founded %></p>
-<p><%= @club.competition.name %></p>
-<p>League Position: <%= @clubStats.leaguePosition_overall%></p>
-<p>Stadium: <%= @club.stadium.name %></p>
-<p>Average Attendance: <%= @clubStats.average_attendance_home %></p>
-<p>Goals Scored: <%= @clubStats.seasonGoals_overall %></p>
-<p>Goals Conceded: <%= @clubStats.seasonConceded_overall %></p> 
+  <div class="text-center">
+    <%= render "/clubs/club_facts" %>
+  </div> 
+  <br/>
 
-<%= render "/stats/top_stats"%>
+  <%= render "/layouts/main_title", :content => "Player Stats" %>
+
+  <%= render "/stats/top_stats", {
+      :items => :players,
+      :stats_array => @player_stats_array
+  } %>
 
 
 
@@ -37,7 +45,7 @@
       <tr>
         <td><%= link_to player.name, player %></td>
         <td><%= link_to player.country.name, country_path(player.country) %></td>
-        <td><%= player.birthday %></td>
+        <td><%= player.age %></td>
         <td><%= player.position.name %></td>
       
         
@@ -48,4 +56,5 @@
 
 
  <%= link_to 'Back', url_for(:back) %>
+ </div>
 

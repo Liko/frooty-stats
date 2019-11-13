@@ -1,32 +1,13 @@
-<h1> Players</h1>
+<div class="container">
+<%= render "/layouts/main_title", :content => "Player Listings" %>
  
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Club</th>
-      <th>Position</th>
-      <th>Age</th>
-      <th>Country</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
- 
-  <tbody>
-    <% @players.each do |player| %>
-      <tr>
-        <td><%= link_to player.name, player_path(player) %></td>
-        <td><%= link_to player.club.name, club_path(player.club) %></td>
-        <td><%= player.position.name %></td>
-        <td><%= player.birthday %></td>
-        <td><%= player.country.name %></td>
 
-     
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @players.each do |player| %>
+    <%= render "/players/player_secondary_label", :player => player %>
+  <% end %>
+</div>
  
-<br>
-
+</div>
 <%= link_to 'Back', url_for(:back) %>
+

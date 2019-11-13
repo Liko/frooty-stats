@@ -16,6 +16,7 @@ def model_data(data_hash)
     player_array = getPlayers(data_hash)
     player_stats_array = getPlayerStats(data_hash)
     club_stats_array = getClubStats(data_hash)
+    matches_array = getMatches(data_hash)
 
     data = {
         :country_hash => country_hash,
@@ -25,7 +26,8 @@ def model_data(data_hash)
         :position_hash => position_hash, 
         :player_array => player_array,
         :player_stats_array => player_stats_array,
-        :club_stats_array => club_stats_array
+        :club_stats_array => club_stats_array,
+        :matches_array => matches_array
     }
 end
 
@@ -167,6 +169,44 @@ def getClubStats(data_hash)
     club_stats_array
 end
 
+def getMatches(data_hash)
+    matches_array = []
+    matches_hash = data_hash["matches"]["data"]
+
+    matches_hash.map do |m|
+        match = {}
+        match[:home_id] = m["homeID"]
+        match[:away_id] = m["awayID"]
+        match[:home_goal_count] = m["homeGoalCount"]
+        match[:away_goal_count] = m["awayGoalCount"]
+        match[:stadium_name] = m["stadium_name"]
+        match[:date] = m["date_unix"]
+        match[:attendance] = m["attendance"]
+        match[:status] = m["status"]
+        match[:fs_match_id] = m["id"]
+        match[:fs_competition_id] = m["competition_id"]
+        match[:game_week] = m["game_week"]
+        match[:winningTeam] = m["winningTeam"]
+        match[:team_a_corners] = m["team_a_corners"]
+        match[:team_b_corners] = m["team_b_corners"]
+        match[:team_a_offsides] = m["team_a_offsides"]
+        match[:team_b_offsides] = m["team_b_offsides"]
+        match[:team_a_yellow_cards] = m["team_a_yellow_cards"]
+        match[:team_b_yellow_cards] = m["team_b_yellow_cards"]
+        match[:team_a_red_cards] = m["team_a_red_cards"]
+        match[:team_b_red_cards] = m["team_b_red_cards"]
+        match[:team_a_shotsOnTarget] = m["team_a_shotsOnTarget"]
+        match[:team_b_shotsOnTarget] = m["team_b_shotsOnTarget"]
+        match[:team_a_shots] = m["team_a_shots"]
+        match[:team_b_shots] = m["team_b_shots"]
+        match[:team_a_fouls] = m["team_a_fouls"]
+        match[:team_b_fouls] = m["team_b_fouls"]
+        match[:team_a_possession] = m["team_a_possession"]
+        match[:team_b_possession] = m["team_b_possession"]
+        matches_array << match
+    end
+    matches_array
+end
 
 def run_json_to_seed
     data_hash = import_json
