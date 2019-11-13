@@ -40,6 +40,11 @@ class CompetitionsController < ApplicationController
 
         @top_x = 10
 
+        @page_size = 20
+        @total_pages = (@results.size/@page_size) + 1
+
+        @page_count = 0
+
 
     end
 end
