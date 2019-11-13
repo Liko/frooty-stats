@@ -1,51 +1,5 @@
 <div class="p-5">
     <div class="card col-10 pt-3 mx-auto hoverable">
-        <div class="row text-center p-3">
-            <div class="col-12 ptbm-5 ">
-                <p><%=link_to match.competition.name, competition_path(match.competition)%></p>
-            </div>
-        </div>
-        <div class="row text-center p-3">
-            <div class="col-4 ptbm-5 ">
-                <h4><%=link_to match.home_club_name, club_path(match.home_club) %></h4>
-            </div>
-            <div class="col-4 ptbm-5">
-                <h4>VS<h4>
-            </div>
-            <div class="col-4 ptbm-5 ">
-                <h4><%=link_to match.away_club_name, club_path(match.away_club) %></h4>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-4 animated jello">
-                <%= image_tag match.home_club.image, size: "80x80" %>
-            </div>
-            <div class="col-1">
-                <h1><%=match.home_goal_count%></h3>
-            </div>
-            <div class="col-2 p-2">
-                <h3>-</h3>
-            </div>
-            <div class="col-1">
-                <h1><%=match.away_goal_count%></h3>
-            </div>
-            <div class="col-4 pb-5 animated jello">
-                <%= image_tag match.away_club.image, size: "80x80" %>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-12 pb-5 animated jello">
-                    <h3><%= match.print_status%></h3>
-            </div>
-        </div>
-        <% if @parent == @competition %>
-            <div class="row text-center">
-                <div class="col-12 pb-5 animated jello">
-                        <p><%= link_to "See Full Stats", match_path(match)%></p>
-                </div>
-            </div>
-        <% end %>
-
-
+        <%= render '/matches/match_title_contents', match: @match  %>
     </div>
 </div>
