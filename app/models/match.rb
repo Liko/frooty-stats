@@ -12,4 +12,14 @@ class Match < ApplicationRecord
     def away_club_name
         self.away_club.name
     end
+
+    def real_date
+        date = DateTime.strptime(self.date.to_s,'%s')
+        date.strftime("%A %d %B %Y")   
+    end
+
+    def real_time
+        date = DateTime.strptime(self.date.to_s,'%s')
+        date.strftime("%R")
+    end
 end
