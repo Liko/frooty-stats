@@ -163,7 +163,7 @@ def seed_club_stats(data)
     puts "Club Stats seeded"
 end
 
-def seed_matches
+def seed_matches(data)
     matches = data[:matches_array]
     matches.each do |m|
         Match.create(
