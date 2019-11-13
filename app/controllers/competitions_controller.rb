@@ -39,5 +39,7 @@ class CompetitionsController < ApplicationController
         ]
 
         @top_x = 10
+
+
     end
 end

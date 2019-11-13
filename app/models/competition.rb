@@ -5,4 +5,7 @@ class Competition < ApplicationRecord
     has_many :players
     has_many :matches
 
+    def getClubStatsByLeaguePosition
+        self.clubs.map{|club|club.clubStat}.sort_by{|clubStat|clubStat.leaguePosition_overall}
+    end
 end
