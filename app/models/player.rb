@@ -4,7 +4,7 @@ class Player < ApplicationRecord
     belongs_to :competition
     belongs_to :country
     has_one :playerStat
-    has_many :goals
+    # has_many :goals
 
     # def club_players
     #     @club_players = Player.where("club_id = ? AND position_id = ?", params[:club_id], params[:position_id]

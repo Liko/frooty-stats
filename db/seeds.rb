@@ -1,5 +1,4 @@
 require_relative 'data_generation/json_to_seed'
-# require 'pry'
 
 
 def run
@@ -15,6 +14,7 @@ def run
     players = seed_players(data)
     player_stats = seed_player_stats(data)
     club_stats = seed_club_stats(data)
+    matches = seed_matches(data)
     seed_users
   
 end
@@ -40,6 +40,9 @@ def remove_old_seeds
 
     ClubStat.destroy_all
     puts "Club stats cleared"
+
+    Match.destroy_all
+    puts "Matches cleared"
 
     User.destroy_all
     puts "Users cleared"
@@ -158,6 +161,52 @@ def seed_club_stats(data)
     end
     puts "Club Stats seeded"
 end
+
+def seed_matches(data)
+    matches = data[:matches_array]
+    matches.each_with_index do |m, i|
+        my_match = Match.create(
+            home_id: Club.find_by(fs_club_id:m[:home_id]).id,
+            away_id: Club.find_by(fs_club_id:m[:away_id]).id,
+            home_goal_count: m[:home_goal_count],
+            away_goal_count: m[:away_goal_count],
+            stadium_id: determineMatchStadium(m[:stadium_name]),
+            date: m[:date],
+            attendance: m[:attendance],
+            status: m[:status],
+            fs_match_id: m[:fs_match_id],
+            competition_id: Competition.find_by(fs_league_id:m[:fs_competition_id]).id,
+            game_week: m[:game_week],
+            winningTeam: (m[:home_goal_count] <=> m[:away_goal_count]),
+            team_a_corners: m[:team_a_corners],
+            team_b_corners: m[:team_b_corners],
+            team_a_offsides: m[:team_a_offsides],
+            team_b_offsides: m[:team_b_offsides],
+            team_a_yellow_cards: m[:team_a_yellow_cards],
+            team_b_yellow_cards: m[:team_b_yellow_cards],
+            team_a_red_cards: m[:team_a_red_cards],
+            team_b_red_cards: m[:team_b_red_cards],
+            team_a_shotsOnTarget: m[:team_a_shotsOnTarget],
+            team_b_shotsOnTarget: m[:team_b_shotsOnTarget],
+            team_a_shots: m[:team_a_shots],
+            team_b_shots: m[:team_b_shots],
+            team_a_fouls: m[:team_a_fouls],
+            team_b_fouls: m[:team_b_fouls],
+            team_a_possession: m[:team_a_possession],
+            team_b_possession: m[:team_b_possession]
+        )
+    end
+    puts "Matches seeded"
+end
+
+def determineMatchStadium(stadium_name)
+    if stadium_name == ""
+        return -1
+    else
+        return Stadium.find_by(name:stadium_name).id
+    end
+end
+
 
 def seed_users
     users_arr = [
