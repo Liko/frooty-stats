@@ -184,7 +184,7 @@ def getMatches(data_hash)
         match[:attendance] = m["attendance"]
         match[:status] = m["status"]
         match[:fs_match_id] = m["id"]
-        match[:competition_id] = m["competition_id"]
+        match[:fs_competition_id] = m["competition_id"]
         match[:game_week] = m["game_week"]
         match[:winningTeam] = m["winningTeam"]
         match[:team_a_corners] = m["team_a_corners"]
