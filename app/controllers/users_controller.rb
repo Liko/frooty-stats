@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       @user = User.create(user_params)
       return redirect_to controller: 'users', action: 'new' unless @user.save
       session[:user_id] = @user.id
-      redirect_to controller: 'welcome', action: 'home'
+      redirect_to controller: 'home', action: 'today'
     end
 
     def edit
@@ -21,13 +21,14 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         @user.update(user_params)
-        redirect_to controller: 'welcome', action: 'home'
+        redirect_to controller: 'home', action: 'today'
     end
 
     def destroy
         @user = User.find(params[:id])
         @user.destroy
-        redirect_to controller: 'sessions', action: 'new'
+        session.delete :user_id
+        redirect_to '/'
     end
   
     private

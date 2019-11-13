@@ -1,10 +1,12 @@
-<% if @favourited %>
-    <%= form_with url: favourite_path(@club), method: 'delete' do |f| %>
-      <%= f.submit "Remove from favourites", :class => 'btn btn-danger' %>
-    <% end %>
-  <% else %>
-    <%= form_for @fav do |f| %>
-      <%= f.hidden_field :club_id, :value => @club.id %>
-      <%= f.submit "Add to favourites", :class => 'btn btn-success' %>
-    <% end %>
+<% if session[:user_id] %>
+  <% if @favourited %>
+      <%= form_with url: favourite_path(@club), method: 'delete' do |f| %>
+        <%= f.submit "Remove from favourites", :class => 'btn btn-danger' %>
+      <% end %>
+    <% else %>
+      <%= form_for @fav do |f| %>
+        <%= f.hidden_field :club_id, :value => @club.id %>
+        <%= f.submit "Add to favourites", :class => 'btn btn-success' %>
+      <% end %>
+  <% end %>
 <% end %>

@@ -5,12 +5,16 @@ def index
 end
  
 def show
-    @user = User.find(session[:user_id])
+
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @favourited = User.favourited(session[:user_id], params[:id])
+      @fav = Favourite.new
+    end
+
     @club = Club.find(params[:id]) 
-    @favourited = User.favourited(session[:user_id], params[:id])
     @players = @club.players.sort_by{|player| player.position_id}
 
-    @fav = Favourite.new
 
     @clubStats = @club.clubStat
     @parent = @club

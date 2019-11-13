@@ -1,0 +1,13 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">Favourites</a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <% if @fav_clubs.empty? %>
+            <%= link_to "No favourites selected", clubs_path, {class: "dropdown-item"} %>
+        <% else %>
+            <% @fav_clubs.each do |club| %>
+                <%= link_to club.name, club, {class: "dropdown-item"} %>
+            <% end %>
+        <% end %>
+    </div>
+</li>
