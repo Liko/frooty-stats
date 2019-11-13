@@ -4,4 +4,12 @@ class Match < ApplicationRecord
     belongs_to :away_club, class_name: 'Club', required: true, foreign_key: :away_id
     belongs_to :stadium 
     belongs_to :competition
+
+    def home_club_name
+        self.home_club.name
+    end
+
+    def away_club_name
+        self.away_club.name
+    end
 end
