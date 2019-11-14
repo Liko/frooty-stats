@@ -31,5 +31,8 @@ class Club < ApplicationRecord
         position_hash
     end
 
+    def self.sort_alphabetically(club_array)
+        club_array.sort_by{|club|club.name}
+    end
 
 end

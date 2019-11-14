@@ -29,6 +29,11 @@
       :stats_array => @player_stats_array
   } %>
 
+
+  <%= render "/layouts/main_title", :content => "League Table" %>
+  
+  <%= render "/competitions/league_table", :competition => @club.competition %>
+
   <%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} Players" %>
 
   <%= render "/clubs/club_player_listings" %>

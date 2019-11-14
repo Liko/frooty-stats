@@ -22,7 +22,7 @@
         <div class="tab-pane fade show active" id="pills-clubs" role="tabpanel" aria-labelledby="pills-clubs-tab">
 
             <div class="row">
-                <% @competition.clubs.each do |club|%>
+                <% @clubs.each do |club|%>
                     <%= render "/clubs/club_primary_label", :club => club %>
                 <% end %>
             </div>
@@ -70,7 +70,7 @@
 
         <div class="tab-pane fade" id="pills-league-table" role="tabpanel" aria-labelledby="pills-league-table-tab">
 
-            <%= render "/competitions/league_table" %>
+            <%= render "/competitions/league_table", :competition => @competition %>
             
         </div>
 
