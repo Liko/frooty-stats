@@ -70,7 +70,10 @@
 
         <div class="tab-pane fade" id="pills-league-table" role="tabpanel" aria-labelledby="pills-league-table-tab">
 
-            <%= render "/competitions/league_table", :competition => @competition %>
+            <%= render "/competitions/league_table", {
+                :competition => @competition,
+                :num_teams => @competition.clubs.size
+                } %>
             
         </div>
 

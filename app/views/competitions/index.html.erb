@@ -2,16 +2,21 @@
     <%= render "/layouts/main_title", :content => "All Competitions" %>
 
     <% @competitions.each do |competition|%>
-        <h2 class="text-center p-5">
+        <div class="text-center p-5">
             <div class="card p-3 hoverable">
-                <%= link_to competition.name, competition %>
+                <h2><%= link_to competition.name, competition %></h2>
 
-                <%=competition.clubs.size%> Teams<br/>
+                <%=competition.clubs.size%> Teams competing in <%=competition.country%>.<br/><br/>
 
-                *placeholder* Show Top 4 teams of league table **
+                <h4>League Table Preview</h4>
+
+                <%= render "/competitions/league_table", {
+                    :competition => competition,
+                    :num_teams => 4
+                    } %>
 
             </div>
-        </h2>
+        </div>
         
 
     <% end %>

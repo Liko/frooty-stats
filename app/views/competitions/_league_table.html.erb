@@ -17,7 +17,7 @@
                 </tr>   
             </thead>
             <tbody>
-                <% competition.getClubStatsByLeaguePosition.each do |clubStat| %>
+                <% competition.getClubStatsByLeaguePosition[0..num_teams-1].each do |clubStat| %>
                     <tr>
                         <td><%= clubStat.leaguePosition_overall %></td>
                         <td><%= image_tag clubStat.club.image, size: "20x20"  %>&nbsp&nbsp&nbsp<%= link_to clubStat.club.name, club_path(clubStat.club) %></td>

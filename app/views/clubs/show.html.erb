@@ -32,7 +32,10 @@
 
   <%= render "/layouts/main_title", :content => "League Table" %>
   
-  <%= render "/competitions/league_table", :competition => @club.competition %>
+  <%= render "/competitions/league_table", {
+    :competition => @club.competition,
+    :num_teams => -1
+  } %>
 
   <%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} Players" %>
 
