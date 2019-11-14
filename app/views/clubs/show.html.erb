@@ -29,64 +29,9 @@
       :stats_array => @player_stats_array
   } %>
 
-<%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} Players" %>
+  <%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} Players" %>
 
-  <% @position_ids.each do |pos_id| %>
-
-  <div class="row justify-content-center">
-    <%= render "/clubs/club_heading_with_logo", :content => "#{Position.find(pos_id).name.pluralize}" %>
-  </div>
-  <div class="row justify-content-center">
-
-    <div class="card col-10 mx-auto hoverable">
-
-      <table class="table">
-          <thead>
-              <tr class="text-center">
-                <td class="text-left">Name</td>
-                <td>Age</td>
-                <td>Appearances</td>
-                <% if pos_id ==  1 %>
-                  <td>Clean Sheets</td>
-                <td>Goals Conceded</td>   
-                <% else %>
-                  <td>Goals Scored</td>
-                  <td>Assists</td>
-                <% end %>
-                <td>Yellow Cards</td>
-                <td>Red Cards</td>
-              </tr>
-          </thead>
-          <tbody>
-
-      <% @club.players_grouped_by_position[pos_id].each do |player| %>
-       <tr class="text-center">
-          <td class="text-left"><%= link_to player.name, player %></td>
-          <td><%= player.age %></td>
-          <td><%= player.playerStat.appearances_overall%>
-          <% if player.position_id ==  1 %>
-            <td><%= player.playerStat.clean_sheets_overall %></td>
-            <td><%= player.playerStat.conceded_overall %></td>   
-          <% else %>
-            <td><%= player.playerStat.goals_overall %></td>
-            <td><%= player.playerStat.assists_overall %></td>
-          <% end %>
-          <td><%= player.playerStat.yellow_cards_overall%>
-          <td><%= player.playerStat.red_cards_overall%>
-
-      </tr>
-      
-    <% end %>
-
-     </tbody>
-        </table>
-        
-    </div>
-</div>
-<% end %>
-
-
-
-
+  <%= render "/clubs/club_player_listings" %>
+  
 </div>
 
