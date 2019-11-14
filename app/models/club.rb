@@ -14,4 +14,22 @@ class Club < ApplicationRecord
     has_many :favourites
     has_many :users, through: :favourites
 
+    def players_sorted_by_position
+        self.players.sort_by{|player| player.position_id}
+    end
+
+    def players_grouped_by_position
+
+        sorted_players_array = self.players_sorted_by_position
+        position_id_array = Position.position_id_array
+        position_hash = Hash[position_id_array.map {|id| [id,[]]}]
+
+        sorted_players_array.each do |player|
+            position_hash[player.position_id] << player
+        end
+
+        position_hash
+    end
+
+
 end

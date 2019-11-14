@@ -13,10 +13,12 @@ class ClubsController < ApplicationController
       end
     
       @club = Club.find(params[:id]) 
-      @players = @club.players.sort_by{|player| player.position_id}
+      @players = @club.players_sorted_by_position
 
       @clubStats = @club.clubStat
       @parent = @club
+      
+      @position_ids = Position.position_id_array
 
       @player_stats_array = [
         {"goals_overall" => "Goals Scored"},
