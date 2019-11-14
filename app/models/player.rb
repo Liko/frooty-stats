@@ -15,7 +15,7 @@ class Player < ApplicationRecord
             return "N/A"
         else
             dob = DateTime.strptime(self.birthday.to_s,'%s')
-            dob.strftime("Born on %a the %d/%B/%Y") 
+            dob.strftime("%A %d %B %Y") 
         end
 
     end

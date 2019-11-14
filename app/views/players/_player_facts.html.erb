@@ -1,4 +1,4 @@
-<div class="card col-12 col-md-10 mx-auto hoverable">
+<div class="card col-12 col-md-10 pt-4 pb-3 mx-auto hoverable text-center">
   
     <% if @player.position_id ==  1 %>
     <p>Clean Sheets: <%= @player.playerStat.clean_sheets_overall %></p>
@@ -14,8 +14,6 @@
     <p>Penalty Misses: <%= @player.playerStat.penalty_misses %></p>
     <p>Yellow Cards: <%= @player.playerStat.yellow_cards_overall %></p>
     <p>Red Cards: <%= @player.playerStat.red_cards_overall %></p>
-
-
 </div>
 
 
