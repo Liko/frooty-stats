@@ -45,4 +45,22 @@ class Match < ApplicationRecord
     def self.sortFixturesByUpcomingAndCompetitionId(competition_id)
         sorted_matches = Match.where(competition_id: competition_id).sort_by{|match|match.date}.select{|match|match.status=="incomplete"}
     end
+
+    def self.getFixturesForClub(club_id, competition_id)
+        home_fixtures = Match.where(competition_id: competition_id, home_id: club_id).select{|match|match.status=="incomplete"}
+
+        away_fixtures = Match.where(competition_id: competition_id, away_id: club_id).select{|match|match.status=="incomplete"}
+
+        fixtures = (home_fixtures + away_fixtures).sort_by{|fixture|fixture.date}
+    end
+
+    def self.getResultsForClub(club_id, competition_id)
+        home_results = Match.where(competition_id: competition_id, home_id: club_id).select{|match|match.status=="complete"}
+
+        away_results = Match.where(competition_id: competition_id, away_id: club_id).select{|match|match.status=="complete"}
+
+        results = (home_results + away_results).sort_by{|result|-result.date}
+    end
+
+
 end

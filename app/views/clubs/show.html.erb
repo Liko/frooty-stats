@@ -32,6 +32,26 @@
   <%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} Players" %>
 
   <%= render "/clubs/club_player_listings" %>
+  <br/>
+
+
+  <%= render "/layouts/main_title", :content => "Upcoming Fixtures" %>
+
+  <% @fixtures.each do |match| %>
+      <%= render "/matches/match_combo", {
+        match: match,
+        source: "competitions"
+    } %>
+  <% end %>
+
+  <%= render "/layouts/main_title", :content => "Recent Results" %>
+
+  <% @results.each do |match| %>
+      <%= render "/matches/match_combo", {
+        match: match,
+        source: "competitions"
+  } %>
+  <% end %>
   
 </div>
 
