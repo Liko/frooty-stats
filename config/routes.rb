@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  get '/signup' => 'users#new'
   post '/logout' => 'sessions#destroy'
 
   root 'home#today'
