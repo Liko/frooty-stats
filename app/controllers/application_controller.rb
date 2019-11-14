@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :current_user
     before_action :favourite_clubs
 
-    helper_method :logged_in?
-    helper_method :redirect_if_logged_in
+    helper_method :logged_in?, :redirect_if_logged_in, :favourites_limit?
 
     def current_user
         @user = (User.find_by(id: session[:user_id]) || User.new)
@@ -25,4 +24,7 @@ class ApplicationController < ActionController::Base
         @fav_clubs = Club.where(id: user_favs.map(&:club_id))
     end
 
+    def favourites_limit?
+        @user.favourites.count == 5
+    end
 end
