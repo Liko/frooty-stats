@@ -1,4 +1,4 @@
-<% if session[:user_id] %>
+<% if logged_in? %>
   <% if @favourited %>
       <%= form_with url: favourite_path(@club), method: 'delete' do |f| %>
         <%= f.submit "Remove from favourites", :class => 'btn btn-danger' %>
