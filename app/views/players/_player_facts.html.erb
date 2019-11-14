@@ -1,4 +1,4 @@
-<div class="card col-12 col-md-10 mx-auto hoverable">
+<div class="card col-12 col-md-10 pt-4 pb-3 mx-auto hoverable text-center">
   
     <% if @player.position_id ==  1 %>
     <p>Clean Sheets: <%= @player.playerStat.clean_sheets_overall %></p>
@@ -7,15 +7,13 @@
     <p>Goals Scored: <%= @player.playerStat.goals_overall %></p>
     <p>Assists: <%= @player.playerStat.assists_overall %></p>
     <p>Converted Penalties: <%= @player.playerStat.penalty_goals %></p>
+    <p>Penalty Misses: <%= @player.playerStat.penalty_misses %></p>
     <% end %>
 
     <p>League Appearances: <%= @player.playerStat.appearances_overall %></p>
     <p>Minutes Played: <%= @player.playerStat.minutes_played_overall %></p>
-    <p>Penalty Misses: <%= @player.playerStat.penalty_misses %></p>
     <p>Yellow Cards: <%= @player.playerStat.yellow_cards_overall %></p>
     <p>Red Cards: <%= @player.playerStat.red_cards_overall %></p>
-
-
 </div>
 
 

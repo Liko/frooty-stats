@@ -30,14 +30,16 @@ module  TopStats
                         :id => stat.player.id,
                         :name => stat.player.name, 
                         :num_stat => stat.send(my_stat),
-                        :image => stat.player.club.image         
+                        :image => stat.player.club.image,
+                        :instance => stat.player        
                     }
                 elsif items == :clubs
                     {
                         :id => stat.club.id,
                         :name => stat.club.name,
                         :num_stat => stat.send(my_stat),
-                        :image => stat.club.image 
+                        :image => stat.club.image, 
+                        :instance => stat.club
                     }
                 end
             end

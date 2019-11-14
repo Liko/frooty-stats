@@ -17,7 +17,7 @@
                     <tr>
                         <td><%= image_tag item[:image], size: "25x25" if @parent.class == Competition %></td>
                         <td><%= i+1 %>. </td>
-                        <td><%= item[:name] %></td>  
+                        <td><%= link_to item[:name], item[:instance]  %></td>  
                         <td><%= item[:num_stat] %>
                     </tr>   
                 <% end %>
