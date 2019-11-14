@@ -28,6 +28,9 @@ class ClubsController < ApplicationController
       ]
 
       @top_x = 5
+
+      @fixtures= Match.getFixturesForClub(@club.id, @club.competition_id)
+      @results = Match.getResultsForClub(@club.id, @club.competition_id)
   end
 
 

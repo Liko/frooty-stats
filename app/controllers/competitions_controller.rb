@@ -8,6 +8,8 @@ class CompetitionsController < ApplicationController
         @competition = Competition.find(params[:id])
         @parent = @competition
 
+        @clubs = Club.sort_alphabetically(@competition.clubs)
+
         @results = Match.sortResultsByRecentAndCompetitionId(@competition.id)
 
         @fixtures = Match.sortFixturesByUpcomingAndCompetitionId(@competition.id)
