@@ -34,7 +34,7 @@
   <% @position_ids.each do |pos_id| %>
 
   <div class="row justify-content-center">
-    <%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} #{Position.find(pos_id).name.pluralize}" %>
+    <%= render "/clubs/club_heading_with_logo", :content => "#{Position.find(pos_id).name.pluralize}" %>
   </div>
   <div class="row justify-content-center">
 

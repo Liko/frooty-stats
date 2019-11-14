@@ -9,9 +9,9 @@
                     <td><%= image_tag match.away_club.image, size: "50x50" %></td>  
                 </tr>   
                 <tr>
-                    <th scope="col"><%= match.home_club_name %></th>
+                    <th scope="col"><%= link_to match.home_club_name, match.home_club %></th>
                     <th scope="col">-</th>
-                    <th scope="col"><%= match.away_club_name %></th>
+                    <th scope="col"><%= link_to match.away_club_name, match.away_club %></th>
                 </tr>
             </thead>
             <tbody>
