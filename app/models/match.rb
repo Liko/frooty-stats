@@ -62,5 +62,40 @@ class Match < ApplicationRecord
         results = (home_results + away_results).sort_by{|result|-result.date}
     end
 
+    def self.getMostRecentResult(club)
+        #with club return result
+        home_results = Match.where(home_id: club.id).select{|match|match.status=="complete"}
+
+        away_results = Match.where(away_id: club.id).select{|match|match.status=="complete"}
+
+        (home_results + away_results).sort_by{|result|-result.date}.first
+    end
+
+    def self.getUpcomingFixture(club)
+        home_fixtures = Match.where(home_id: club.id).select{|match|match.status=="incomplete"}
+
+        away_fixtures = Match.where(away_id: club.id).select{|match|match.status=="incomplete"}
+
+        (home_fixtures + away_fixtures).sort_by{|fixture|fixture.date}.first
+    end
+
+    def self.getRelevantMatches(club)
+        result = Match.getMostRecentResult(club)
+        fixture = Match.getUpcomingFixture(club)
+
+        matches = {
+            :club => club,
+            :result => result,
+            :fixture => fixture
+        }
+    end
+
+    def self.getUpcomingFixtures(num_matches)
+        fixtures = Match.all.select{|match|match.status=="incomplete"}
+        fixtures.sort_by{|fixture|fixture.date}[0...num_matches]
+    end
+
+
+
 
 end
