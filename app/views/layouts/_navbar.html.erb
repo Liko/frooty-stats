@@ -29,20 +29,22 @@
       <li class="nav-item">
       <%= link_to "Players", players_path, :class=> "nav-link" %> 
       </li>
-
-
-      <!-- Checks for logged-in or logged-out user -->
-      <% if logged_in? %>
+       <% if logged_in? %>
         <%= render "/favourites/dropdown"%>
-        <%= render "/users/dropdown"%>
-        <%= render "/users/greeting"%>
-      <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", login_path, :class=> "nav-link" %>
-          </li>
       <% end %>
-
     </ul>
+
+    <span class="navbar-nav justify-content-right">
+      <% if logged_in? %>
+          <%= render "/users/greeting"%>
+          <%= render "/users/dropdown"%>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", login_path, :class=> "nav-link" %>
+        </li>
+      <% end %>
+     
+    </span>
 
     <%# <form class="form-inline">
       <div class="md-form my-0">
