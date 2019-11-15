@@ -21,8 +21,10 @@
   <body>
     <%= render "/layouts/navbar" %>
     
-    <div class="dusty-grass-gradient">
+    <div class="dusty-grass-gradient min-vh-100">
         <%= yield %>
     </div>
+
+    <%= render "/layouts/footer" %>
   </body>
 </html>
