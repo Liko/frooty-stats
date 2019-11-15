@@ -3,28 +3,28 @@
 
         <table class="table text-center">
             <thead>
-                <tr>
-                    <td><%= image_tag match.home_club.image, size: "50x50" %></td>
-                    <td><h4 class="pt-3">VS</h4></td>
-                    <td><%= image_tag match.away_club.image, size: "50x50" %></td>  
+                <tr class="row">
+                    <td class="col-4"><%= image_tag match.home_club.image, size: "50x50" %></td>
+                    <td class="col-4"><h4 class="pt-3">VS</h4></td>
+                    <td class="col-4"><%= image_tag match.away_club.image, size: "50x50" %></td>  
                 </tr>   
-                <tr>
-                    <th scope="col"><%= link_to match.home_club_name, match.home_club %></th>
-                    <th scope="col">-</th>
-                    <th scope="col"><%= link_to match.away_club_name, match.away_club %></th>
+                <tr class="row">
+                    <th class="col-4" scope="col"><%= link_to match.home_club_name, match.home_club %></th>
+                    <th class="col-4" scope="col">-</th>
+                    <th class="col-4" scope="col"><%= link_to match.away_club_name, match.away_club %></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><%= match.home_goal_count %></td>
-                    <td>Goals</td>
-                    <td><%= match.away_goal_count%></td>  
+                <tr class="row">
+                    <td class="col-4"><%= match.home_goal_count %></td>
+                    <td class="col-4">Goals</td>
+                    <td class="col-4"><%= match.away_goal_count%></td>  
                 </tr> 
                 <% @match_stats_array.each do |stat| %>
-                    <tr>
-                        <td><%= match.getStat(stat)[:team_a_stat] %></td>
-                        <td><%= stat.titleize %></td>
-                        <td><%= match.getStat(stat)[:team_b_stat] %></td>  
+                    <tr class="row">
+                        <td class="col-4"><%= match.getStat(stat)[:team_a_stat] %></td>
+                        <td class="col-4"><%= stat.titleize %></td>
+                        <td class="col-4"><%= match.getStat(stat)[:team_b_stat] %></td>  
                     </tr>   
                 <% end %>
             </tbody>
