@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users, only: [:new, :show, :create, :update, :destroy]
   resources :matches
   resources :players
   resources :clubs
