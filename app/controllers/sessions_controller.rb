@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         @user = user
         redirect_to controller: 'home', action: 'today'
       else
-        flash[:errors] = "Invalid username or password. Please revise your input."
+        flash[:errors] = "Invalid username or password. Please review your input."
         return redirect_to controller: 'sessions', action: 'new'
       end
     end
