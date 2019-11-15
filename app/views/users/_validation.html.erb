@@ -1,0 +1,8 @@
+<% if !!flash[:errors] %>
+    <div class="alert alert-danger container col-md-4" role="alert">
+        <p>Please review your input:</p>  
+        <% flash[:errors].each_with_index do |message, i| %>
+            <%= "#{i+1}. #{message}" %><br>
+        <% end %>
+    </div>
+<% end %>

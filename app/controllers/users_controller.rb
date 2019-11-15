@@ -9,20 +9,27 @@ class UsersController < ApplicationController
     end
   
     def create
-      @user = User.create(user_params)
-      return redirect_to controller: 'users', action: 'new' unless @user.save
-      session[:user_id] = @user.id
-      redirect_to controller: 'home', action: 'today'
-    end
+      @user = User.new(user_params)
 
-    def edit
-        @user = User.find(params[:id])
+      if @user.valid?
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to controller: 'home', action: 'today'
+      else
+        flash[:errors] = @user.errors.full_messages
+        redirect_to controller: 'users', action: 'new'
+      end
     end
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to controller: 'home', action: 'today'
+
+        if @user.update(user_params)
+          redirect_to controller: 'home', action: 'today'
+        else
+          flash[:errors] = @user.errors.full_messages
+          redirect_to controller: 'users', action: 'show'
+        end
     end
 
     def destroy
