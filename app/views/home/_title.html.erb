@@ -1,0 +1,5 @@
+<% if logged_in? %>
+    <%= render "/layouts/main_title", :content => "#{@user.username}'s Football Digest" %>
+<% else %>
+    <%= render "/layouts/main_title", :content => "Home" %>
+<% end %>

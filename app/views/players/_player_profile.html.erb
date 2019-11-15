@@ -1,0 +1,12 @@
+<div class="card col-12 col-md-10 p-5 mx-auto hoverable">
+    <div class="container text-center"> 
+        <h4 class="p-2"><%= link_to @player.club.name, @player.club %></h4>
+        <%= image_tag @player.club.image, size: "60x60", class: "m-3" %>
+        <p>Position: <%= @player.position.name %></p>
+        <p><%= link_to @player.competition.name, @player.competition %></p>
+        <p>Age: <%= @player.age %></p>
+        <p>Birthdate: <%= @player.birthdate %></p>
+        <p>Nationality: <%= @player.country.name %></p>
+        <p>Home Stadium: <%= @player.club.stadium.name %></p>
+    </div>
+</div>

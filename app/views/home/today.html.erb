@@ -1,1 +1,30 @@
-<h1>Hi</h1>
+<%= render "/home/title" %>
+
+
+<% if logged_in? && !favourite_clubs.empty?  %>
+    <% @club_matches_array.each do |matches| %>
+
+        <%= render "/layouts/main_title", :content => "#{matches[:club].name}'s Recent Result:" %>
+        <%= render "/matches/match_combo", match: matches[:result] %>
+
+        <%= render "/layouts/main_title", :content => "#{matches[:club].name}'s Upcoming Fixture:" %>
+        <%= render "/matches/match_combo", match: matches[:fixture] %>
+    <% end %>
+
+    <% @competition_array.each do |competition| %>
+        <%= render "/layouts/main_title", :content => "#{competition.name} Table:" %>
+
+        <%= render "/competitions/league_table", {
+            :competition => competition,
+            :num_teams => competition.clubs.size
+        } %>
+
+    <% end %>
+
+<% else %>
+    <%= render "/layouts/main_title", :content => "Upcoming Fixtures" %>
+    <% @upcoming_fixtures.each do |fixture| %>
+        <%= render "/matches/match_combo", match: fixture %>
+
+    <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="container">
+
+    <%= render "/matches/match_title", match: @match %>
+    <%= render "/matches/match_details", match: @match %>
+
+    <%= render "/matches/match_stats", match: @match unless @match.status == "incomplete" %>
+
+</div>

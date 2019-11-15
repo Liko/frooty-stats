@@ -1,0 +1,9 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">Account</a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to "Settings", user_path(@user), :class => "dropdown-item" %>
+        
+        <%= link_to "Log out", logout_path, method: :post, :class => "dropdown-item" %>
+    </div>
+</li>
