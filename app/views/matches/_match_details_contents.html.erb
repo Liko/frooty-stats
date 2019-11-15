@@ -1,0 +1,17 @@
+<div class="row p-1 text-center">
+    <div class="col-12">
+        <p>Gameweek <%= match.game_week%></p>
+    </div>
+</div>
+
+<div class="row p-1 text-center">
+    <div class="col-12">
+        <p><%= match.real_time%> - <%= match.real_date%></p>
+    </div>
+</div>
+
+<div class="row p-1 text-center">
+    <div class="col-12">
+        <p><%= match.stadium.name%> - Attendance: <%= match.status == "incomplete" ? "TBC" : number_with_delimiter(match.attendance)%></p>
+    </div>
+</div>

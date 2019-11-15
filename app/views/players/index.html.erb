@@ -1,0 +1,13 @@
+<div class="container">
+<%= render "/layouts/main_title", :content => "Player Listings" %>
+ 
+
+<div class="row">
+  <% @players.each do |player| %>
+    <%= render "/players/player_secondary_label", :player => player %>
+  <% end %>
+</div>
+ 
+</div>
+
+

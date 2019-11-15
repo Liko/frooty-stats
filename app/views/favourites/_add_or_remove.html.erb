@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  <% if @favourited %>
+      <%= render "/favourites/remove_button"%>
+    <% elsif !favourites_limit? %>
+      <%= render "/favourites/add_button"%>
+    <% else %>
+      <div class="alert alert-info" role="alert">
+      <%= flash[:notice] = "You can have up to 5 added favourites" %>
+    <% end %>
+  </div>
+<% end %>

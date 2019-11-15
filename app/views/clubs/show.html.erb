@@ -1,0 +1,65 @@
+<div class="container pb-5">
+
+  <div class="row">
+    <%= render "/clubs/club_primary_label", :club => @club %>
+  </div>
+  <br/>
+
+  <div class="text-center mp-3">
+    <%= render "/favourites/add_or_remove" %>
+  </div>
+  
+  <%= render "/layouts/main_title", :content => "Club Profile" %>
+
+  <div class="text-center">
+    <%= render "/clubs/club_facts" %>
+  </div> 
+
+  <%= render "/layouts/main_title", :content => "Club Stats" %>
+
+  <div class="text-center">
+    <%= render "/clubs/club_stats" %>
+  </div> 
+
+
+  <%= render "/layouts/main_title", :content => "Player Stats" %>
+
+  <%= render "/stats/top_stats", {
+      :items => :players,
+      :stats_array => @player_stats_array
+  } %>
+
+
+  <%= render "/layouts/main_title", :content => "League Table" %>
+  
+  <%= render "/competitions/league_table", {
+    :competition => @club.competition,
+    :num_teams => -1
+  } %>
+
+  <%= render "/clubs/club_heading_with_logo", :content => "#{@club.name} Players" %>
+
+  <%= render "/clubs/club_player_listings" %>
+  <br/>
+
+
+  <%= render "/layouts/main_title", :content => "Upcoming Fixtures" %>
+
+  <% @fixtures.each do |match| %>
+      <%= render "/matches/match_combo", {
+        match: match,
+        source: "competitions"
+    } %>
+  <% end %>
+
+  <%= render "/layouts/main_title", :content => "Recent Results" %>
+
+  <% @results.each do |match| %>
+      <%= render "/matches/match_combo", {
+        match: match,
+        source: "competitions"
+  } %>
+  <% end %>
+  
+</div>
+
