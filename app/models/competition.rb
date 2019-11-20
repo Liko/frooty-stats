@@ -10,7 +10,6 @@ class Competition < ApplicationRecord
     end
 
     def country
-        byebug
         self.clubs.first.country.name
     end
 end
