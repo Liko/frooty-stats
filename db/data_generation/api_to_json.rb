@@ -9,7 +9,8 @@ def api_data_to_file
     url_keywords = ["teams", "players", "matches", "tables", "season"]
     league_ids = [2012]
     data = {}
-    filename = "league_#{league_ids[0]}_data.json"
+    timestamp = Time.now.to_i
+    filename = "#{timestamp}_league_#{league_ids[0]}_data.json"
 
     url_keywords.map do |url_keyword|
         url = "https://api.footystats.org/league-#{url_keyword}?key=example&include=stats&league_id=#{league_ids[0]}"

@@ -2,7 +2,7 @@ require 'json'
 
 
 def import_json
-    file = File.read("#{__dir__}/league_2012_data.json")
+    file = File.read("#{__dir__}/1574280718_league_2012_data.json")
     data_hash = JSON.parse(file)
 end
 

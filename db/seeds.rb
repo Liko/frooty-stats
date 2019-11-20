@@ -26,6 +26,9 @@ def remove_old_seeds
     Position.destroy_all 
     puts "Positions cleared"
 
+    Competition.destroy_all
+    puts "Competitions cleared"
+
     Stadium.destroy_all
     puts "Stadia cleared"
 
